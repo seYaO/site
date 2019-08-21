@@ -33,7 +33,7 @@ export default {
         }
     },
     beforeMount() {
-        document.title = '定制游'
+        // document.title = '定制游'
     },
     mounted() {
         console.log('home mounted')

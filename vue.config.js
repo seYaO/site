@@ -3,7 +3,7 @@ let isProd = process.env.NODE_ENV === 'production'
 module.exports = {
     //基本路径
     baseUrl: isProd
-        ? `/myWeb/`
+        ? `/site/`
         : '/',
 
     // eslint-loader 是否在保存的时候检查
