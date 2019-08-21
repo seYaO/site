@@ -1,3 +1,3 @@
 export default {
-    clientID: '54a21d4fcfc3c2b90085'
+    clientID: '88bfb11e2bc47ad2beb5'
 }
