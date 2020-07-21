@@ -3,8 +3,8 @@ const sidebar = require('./utils/sidebar')
 module.exports = {
     dest: 'dist',
     lang: 'zh-CN',
-    title: 'seYa\'s blog',
-    description: '路的好坏不在于崎岖多少，只在于谁能最终达到目标。',
+    title: 'ES6 入门',
+    description: ' ',
     port: 4000,
     // 注入到当前页面的 HTML <head> 中的标签
     head: [
@@ -44,17 +44,15 @@ module.exports = {
         editLinkText: '编辑此页',
         lastUpdated: '上次更新',
 
-        nav: [ // 导航栏配置
-            {
-                text: 'javascript',
-                items: [
-                    { text: 'es6', link: '/es6tutorial/' },
-                ]
-            },
-        ],
+        // nav: [ // 导航栏配置
+        //     {
+        //         text: 'javascript',
+        //         items: [
+        //             { text: 'es6', link: '/es6tutorial/' },
+        //         ]
+        //     },
+        // ],
         // 侧边栏配置
         sidebar,
-        // 侧边栏显示2级
-        // sidebarDepth: 2,
     }
 };

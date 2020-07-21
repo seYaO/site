@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: /hero2.jpg
+heroImage: /hero.jpg
 actionText: start →
-actionLink: /guide/
+actionLink: /es6tutorial/
 footer: MIT Licensed | Copyright © 2018-present seYa
 ---
