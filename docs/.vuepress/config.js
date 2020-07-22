@@ -13,9 +13,9 @@ module.exports = {
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-        ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
-        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
-        ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+        ['link', { rel: 'apple-touch-icon', href: `/apple-touch-icon-152x152.png` }],
+        ['link', { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#3eaf7c' }],
+        ['meta', { name: 'msapplication-TileImage', content: '/msapplication-icon-144x144.png' }],
         ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
     ],
     // 这是部署到github相关的配置
@@ -25,7 +25,7 @@ module.exports = {
     },
     themeConfig: {
         // 假定 GitHub。也可以是一个完整的 GitLab URL。
-        repo: 'seYaO/build.front',
+        repo: 'seYaO/site',
         // 自定义项目仓库链接文字
         // 默认根据 `themeConfig.repo` 中的 URL 来自动匹配是 "GitHub"/"GitLab"/"Bitbucket" 中的哪个，如果不设置时是 "Source"。
         // repoLabel: '贡献代码！',
