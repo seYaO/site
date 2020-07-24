@@ -14,3 +14,5 @@ surge dist/
 ## 发布方式二
 surge -d seya.surge.sh -p dist/
 ```
+
+skilltutorial 技能教程
