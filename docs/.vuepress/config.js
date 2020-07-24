@@ -39,7 +39,7 @@ module.exports = {
         // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
         docsBranch: 'master',
         // 默认为 false，设置为 true 来启用
-        editLinks: true,
+        // editLinks: true,
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '编辑此页',
         lastUpdated: '上次更新',
