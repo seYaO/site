@@ -59,7 +59,7 @@ $ git clone -b v2.8.1 git@github.com:seYaO/XXX.git
 $ git checkout -b <branchName>
 
 # 删除本地分支 （需要切换到其他分支进行操作）
-$ git branch -d <branchName>
+$ git branch -D <branchName>
 
 # 删除远程分支
 $ git push origin --delete <branchName>
