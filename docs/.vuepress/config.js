@@ -3,7 +3,7 @@ const sidebar = require('./utils/sidebar')
 module.exports = {
     dest: 'dist',
     lang: 'zh-CN',
-    title: 'javascript',
+    title: 'javascript教程',
     description: ' ',
     port: 4000,
     // 注入到当前页面的 HTML <head> 中的标签
