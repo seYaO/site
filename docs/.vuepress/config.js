@@ -51,6 +51,7 @@ module.exports = {
                 items: [
                     { text: 'css3和css', link: 'https://seya-skilltutorial.surge.sh/csstutorial/' },
                     { text: 'tool工具', link: 'https://seya-skilltutorial.surge.sh/tooltutorial/' },
+                    { text: 'js技巧', link: 'https://seya-skilltutorial.surge.sh/jstutorial/' },
                 ]
             },
             {
