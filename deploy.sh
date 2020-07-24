@@ -3,6 +3,6 @@
 yarn build
 
 # 发布surge
-surge -d seya.surge.sh -p dist/
+surge -d seya-skilltutorial.surge.sh -p dist/
 
 
