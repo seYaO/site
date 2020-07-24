@@ -37,21 +37,31 @@ module.exports = {
         // 如果你的文档不在仓库的根目录下：
         docsDir: 'docs',
         // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
-        docsBranch: 'blog',
+        docsBranch: 'master',
         // 默认为 false，设置为 true 来启用
         editLinks: true,
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '编辑此页',
         lastUpdated: '上次更新',
 
-        // nav: [ // 导航栏配置
-        //     {
-        //         text: 'javascript',
-        //         items: [
-        //             { text: 'es6', link: '/es6tutorial/' },
-        //         ]
-        //     },
-        // ],
+        nav: [ // 导航栏配置
+            // { text: '前端基础', link: '/accumulate/' },
+            {
+                text: '技能教程',
+                items: [
+                    { text: 'css3和css', link: 'https://seya-skilltutorial.surge.sh/csstutorial/' },
+                    { text: 'tool工具', link: 'https://seya-skilltutorial.surge.sh/tooltutorial/' },
+                ]
+            },
+            {
+                text: 'javascript',
+                items: [
+                    { text: 'es6教程', link: 'https://seya-es6tutorial.surge.sh/es6tutorial/' },
+                    { text: 'js教程', link: 'https://seya-jstutorial.surge.sh/jstutorial/introduction/' },
+                ]
+            },
+            // { text: '微博', link: 'https://baidu.com' }
+        ],
         // 侧边栏配置
         sidebar,
     }
