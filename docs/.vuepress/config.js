@@ -3,7 +3,7 @@ const sidebar = require('./utils/sidebar')
 module.exports = {
     dest: 'dist',
     lang: 'zh-CN',
-    title: 'ES6 入门',
+    title: '我的博客',
     description: ' ',
     port: 4000,
     // 注入到当前页面的 HTML <head> 中的标签
@@ -37,7 +37,7 @@ module.exports = {
         // 如果你的文档不在仓库的根目录下：
         docsDir: 'docs',
         // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
-        docsBranch: 'es6tutorial',
+        docsBranch: 'blog',
         // 默认为 false，设置为 true 来启用
         editLinks: true,
         // 自定义编辑链接的文本。默认是 "Edit this page"
