@@ -34,6 +34,12 @@ const jstutorial = {
     appendix: ['api', 'plugins'],
 }
 
+// css
+const csstutorial = ['', 'flex', 'use']
+
+// tool
+const tooltutorial = ['', 'git', 'linux', 'mac']
+
 function jstutorialData() {
     function fn(key) {
         let arr = [];
@@ -66,4 +72,6 @@ module.exports = {
     '/relearnFrontEnd/': genSidebarConfig([{ title: '重学前端', children: frontend }]),
     '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
     '/jstutorial/': genSidebarConfig(jstutorialData(), true),
+    '/csstutorial/': genSidebarConfig([{ title: 'css3&css', children: csstutorial }]),
+    '/tooltutorial/': genSidebarConfig([{ title: 'tool工具', children: tooltutorial }]),
 }
