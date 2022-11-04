@@ -24,3 +24,4 @@ yarn deploy # 或 npm run deploy
 - [VuePress中文网](https://vuepress.vuejs.org/zh/)
 - [Markdown 语法整理大集合](https://www.jianshu.com/p/b03a8d7b1719)
 - [Emoji 大全](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) 
+- [Vue常见报错以及解决方案实例总结][https://www.zhangshengrong.com/p/OQNzr6vqNR/]
