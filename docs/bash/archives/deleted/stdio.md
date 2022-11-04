@@ -36,7 +36,7 @@ echo "<HTML>
           Page body.
     </BODY>
 </HTML>"
-```
+
 
 echo '<HTML>
     <HEAD>
@@ -46,6 +46,7 @@ echo '<HTML>
           Page body.
     </BODY>
 </HTML>'
+```
 
 ## read
 

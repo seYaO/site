@@ -2,8 +2,9 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import recoTheme from 'vuepress-theme-reco'
 
-import jstutorial from './utils/jstutorial'
-// console.log('jstutorial',jstutorial)
+// import jstutorial from './utils/jstutorial'
+import sidebar from './utils/sidebar'
+console.log('sidebar',sidebar)
 
 export default defineUserConfig({
     title: 'seYa\'s blog',
@@ -34,19 +35,20 @@ export default defineUserConfig({
         docsDir: 'example',
         lastUpdatedText: '最近更新',
         // series 为原 sidebar 侧边栏配置
-        series: {
-            //   '/docs/theme-reco/': [
-            //     {
-            //       text: 'module one',
-            //       children: ['home', 'theme']
-            //     },
-            //     {
-            //       text: 'module two',
-            //       children: ['api', 'plugin']
-            //     }
-            //   ]
-            '/docs/jstutorial/': jstutorial
-        },
+        // series: {
+        //       '/docs/theme-reco/': [
+        //         {
+        //           text: 'module one',
+        //           children: ['home', 'theme']
+        //         },
+        //         {
+        //           text: 'module two',
+        //           children: ['api', 'plugin']
+        //         }
+        //       ]
+        // },
+        series: sidebar,
+        // subSidebar: 'auto',
         // 导航栏配置
         navbar:
             [
