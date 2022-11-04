@@ -3,7 +3,7 @@ import type { DefaultThemeOptions } from 'vuepress'
 import recoTheme from 'vuepress-theme-reco'
 
 import jstutorial from './utils/jstutorial'
-console.log('jstutorial',jstutorial)
+// console.log('jstutorial',jstutorial)
 
 export default defineUserConfig({
     title: 'seYa\'s blog',
@@ -45,7 +45,7 @@ export default defineUserConfig({
             //       children: ['api', 'plugin']
             //     }
             //   ]
-            // '/docs/jstutorial/': jstutorial
+            '/docs/jstutorial/': jstutorial
         },
         // 导航栏配置
         navbar:

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     {
         text: '入门篇',
         children: [

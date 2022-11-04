@@ -1,4 +1,4 @@
-import jstutorial from './jstutorial'
+// import jstutorial from './jstutorial'
 
 
 const { genSidebarConfig } = require('./index')
