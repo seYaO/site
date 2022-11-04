@@ -1,6 +1,6 @@
-# CORS通信
+# CORS 通信
 
-CORS 是一个 W3C 标准，全称是“跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨域的服务器，发出`XMLHttpRequest`请求，从而克服了AJAX只能同源使用的限制。
+CORS 是一个 W3C 标准，全称是“跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨域的服务器，发出`XMLHttpRequest`请求，从而克服了 AJAX 只能同源使用的限制。
 
 ## 简介
 
@@ -78,28 +78,28 @@ Content-Type: text/html; charset=utf-8
 
 ### withCredentials 属性
 
-上面说到，CORS 请求默认不包含 Cookie 信息（以及 HTTP 认证信息等）。如果需要包含 Cookie 信息，一方面要服务器同意，指定`Access-Control-Allow-Credentials`字段。
+上面说到，CORS 请求默认不包含 Cookie 信息（以及 HTTP 认证信息等），这是为了降低 CSRF 攻击的风险。但是某些场合，服务器可能需要拿到 Cookie，这时需要服务器显式指定`Access-Control-Allow-Credentials`字段，告诉浏览器可以发送 Cookie。
 
 ```http
 Access-Control-Allow-Credentials: true
 ```
 
-另一方面，开发者必须在 AJAX 请求中打开`withCredentials`属性。
+同时，开发者必须在 AJAX 请求中打开`withCredentials`属性。
 
-```js
+```javascript
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 ```
 
-否则，即使服务器同意发送 Cookie，浏览器也不会发送。或者，服务器要求设置 Cookie，浏览器也不会处理。
+否则，即使服务器要求发送 Cookie，浏览器也不会发送。或者，服务器要求设置 Cookie，浏览器也不会处理。
 
-但是，如果省略`withCredentials`设置，有的浏览器还是会一起发送 Cookie。这时，可以显式关闭`withCredentials`。
+但是，有的浏览器默认将`withCredentials`属性设为`true`。这导致如果省略`withCredentials`设置，这些浏览器可能还是会一起发送 Cookie。这时，可以显式关闭`withCredentials`。
 
-```js
+```javascript
 xhr.withCredentials = false;
 ```
 
-需要注意的是，如果要发送 Cookie，`Access-Control-Allow-Origin`就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie 依然遵循同源政策，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，且（跨域）原网页代码中的`document.cookie`也无法读取服务器域名下的 Cookie。
+需要注意的是，如果服务器要求浏览器发送 Cookie，`Access-Control-Allow-Origin`就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie 依然遵循同源政策，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，且（跨域）原网页代码中的`document.cookie`也无法读取服务器域名下的 Cookie。
 
 ## 非简单请求
 
@@ -107,11 +107,11 @@ xhr.withCredentials = false;
 
 非简单请求是那种对服务器提出特殊要求的请求，比如请求方法是`PUT`或`DELETE`，或者`Content-Type`字段的类型是`application/json`。
 
-非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为“预检”请求（preflight）。浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的`XMLHttpRequest`请求，否则就报错。这是为了防止这些新增的请求，对传统的没有 CORS 支持的服务器形成压力，给服务器一个提前拒绝的机会，这样可以防止服务器大量收到`DELETE`和`PUT`请求，这些传统的表单不可能跨域发出的请求。
+非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为“预检”请求（preflight）。浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 方法和头信息字段。只有得到肯定答复，浏览器才会发出正式的`XMLHttpRequest`请求，否则就报错。这是为了防止这些新增的请求，对传统的没有 CORS 支持的服务器形成压力，给服务器一个提前拒绝的机会，这样可以防止服务器收到大量`DELETE`和`PUT`请求，这些传统的表单不可能跨域发出的请求。
 
 下面是一段浏览器的 JavaScript 脚本。
 
-```js
+```javascript
 var url = 'http://api.alice.com/cors';
 var xhr = new XMLHttpRequest();
 xhr.open('PUT', url, true);
@@ -162,7 +162,6 @@ Content-Encoding: gzip
 Content-Length: 0
 Keep-Alive: timeout=2, max=100
 Connection: Keep-Alive
-Content-Type: text/plain
 ```
 
 上面的 HTTP 回应中，关键的是`Access-Control-Allow-Origin`字段，表示`http://api.bob.com`可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。
@@ -247,7 +246,7 @@ CORS 与 JSONP 的使用目的相同，但是比 JSONP 更强大。JSONP 只支�
 
 ## 参考链接
 
-- Monsur Hossain, [Using CORS](http://www.html5rocks.com/en/tutorials/cors/)
-- MDN, [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
-- Ryan Miller, [CORS](https://frontendian.co/cors)
-
+- [Using CORS](http://www.html5rocks.com/en/tutorials/cors/), Monsur Hossain
+- [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), MDN
+- [CORS](https://frontendian.co/cors), Ryan Miller
+- [Do You Really Know CORS?](http://performantcode.com/web/do-you-really-know-cors), Grzegorz Mirek

@@ -13,11 +13,11 @@ bannerBrand:
     margin: '0 auto 2rem'
     borderRadius: '1rem'
   bgImage: '/bg.svg'
-  heroText: vuepress-reco
-  tagline: 一款 vuepress 主题容器，集成多种主题底层功能，快速生成主题风格。主题 2.0 的默认风格是原主题 1.0 迁移而来，更多风格正在路上，敬请期待。
+  heroText: seYaO的前端博客
+  tagline: 写一些常用的前端工具，随笔，还有分享一些学习资料和文件
   buttons:
-    - { text: Guide, link: '/docs/guide/introduce' }
-    - { text: Default Style, link: '/docs/style-default-api/introduce', type: 'plain' }
+    - { text: 开始阅读, link: '/blogs/skill' }
+    - { text: GitHub, link: 'https://github.com/seYaO/site', type: 'plain' }
 isShowTitleInHome: true
 actionText: About
 actionLink: /views/other/about

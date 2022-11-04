@@ -2,109 +2,85 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import recoTheme from 'vuepress-theme-reco'
 
+import jstutorial from './utils/jstutorial'
+console.log('jstutorial',jstutorial)
+
 export default defineUserConfig({
-  title: 'vuepress-theme-reco',
-  description: 'Just playing around',
-  theme: recoTheme({
-    style: '@vuepress-reco/style-default',
-    logo: '/logo.png',
-    author: 'reco_luan',
-    docsRepo: 'https://github.com/vuepress-reco/vuepress-theme-reco-next',
-    docsBranch: 'main',
-    docsDir: 'example',
-    lastUpdatedText: '',
-    // series 为原 sidebar 侧边栏配置
-    series: {
-      '/docs/theme-reco/': [
-        {
-          text: 'module one',
-          children: ['home', 'theme']
-        },
-        {
-          text: 'module two',
-          children: ['api', 'plugin']
-        }
-      ]
-    },
-    // 导航栏配置
-    navbar:
-    [
-      { text: 'Home', link: '/' },
-      { text: 'Categories', link: '/categories/reco/1/' },
-      { text: 'Tags', link: '/tags/tag1/1/' },
-      { text: 'Docs',
-        children: [
-          { text: 'vuepress-reco', link: '/docs/theme-reco/theme' },
-          { text: 'vuepress-theme-reco', link: '/blogs/other/guide' }
-        ]
-      },
+    title: 'seYa\'s blog',
+    description: '路的好坏不在于崎岖多少，只在于谁能最终达到目标。',
+    // 注入到当前页面的 HTML <head> 中的标签
+    head: [
+        ['link', { rel: 'icon', href: `/logo.png` }], // 增加一个自定义的 favicon(网页标签的图标)
+        ['link', { rel: 'manifest', href: '/manifest.json' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+        ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
+        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+        ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+        ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
     ],
-    bulletin: {
-      body: [
-        {
-          type: 'text',
-          content: `🎉🎉🎉 reco 主题 2.x 已经接近 Beta 版本，在发布 Latest 版本之前不会再有大的更新，大家可以尽情尝鲜了，并且希望大家在 QQ 群和 GitHub 踊跃反馈使用体验，我会在第一时间响应。`,
-          style: 'font-size: 12px;'
+    // 这是部署到github相关的配置
+    base: '/',
+    theme: recoTheme({
+        style: '@vuepress-reco/style-default',
+        logo: '/logo.png',
+        author: 'seYaO',
+        // 如果你的文档和项目位于不同仓库：
+        // docsRepo: 'https://github.com/vuepress-reco/vuepress-theme-reco-next',
+        // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
+        docsBranch: 'master',
+        // 如果你的文档不在仓库的根目录下：
+        docsDir: 'example',
+        lastUpdatedText: '最近更新',
+        // series 为原 sidebar 侧边栏配置
+        series: {
+            //   '/docs/theme-reco/': [
+            //     {
+            //       text: 'module one',
+            //       children: ['home', 'theme']
+            //     },
+            //     {
+            //       text: 'module two',
+            //       children: ['api', 'plugin']
+            //     }
+            //   ]
+            // '/docs/jstutorial/': jstutorial
         },
-        {
-          type: 'hr',
+        // 导航栏配置
+        navbar:
+            [
+                { text: '首页', link: '/' },
+                // { text: '分类', link: '/categories/reco/1/' },
+                // { text: '标签', link: '/tags/tag1/1/' },
+                {
+                    text: '文档',
+                    children: [
+                        { text: 'ES6', link: '/docs/es6tutorial/' },
+                        { text: 'JavaScript', link: '/docs/jstutorial/' },
+                        { text: 'HTML', link: '/docs/htmltutorial/' },
+                        { text: 'Web API', link: '/docs/webapi/' },
+                        { text: 'C语言', link: '/docs/clang/' },
+                        { text: 'Bash', link: '/docs/bash/' },
+                        { text: 'SSH', link: '/docs/ssh/' },
+                    ]
+                },
+            ],
+        bulletin: {
+
         },
-        {
-          type: 'title',
-          content: 'QQ 群',
-        },
-        {
-          type: 'text',
-          content: `
-          <ul>
-            <li>QQ群1：1037296104</li>
-            <li>QQ群2：1061561395</li>
-            <li>QQ群3：962687802</li>
-          </ul>`,
-          style: 'font-size: 12px;'
-        },
-        {
-          type: 'hr',
-        },
-        {
-          type: 'title',
-          content: 'GitHub',
-        },
-        {
-          type: 'text',
-          content: `
-          <ul>
-            <li><a href="https://github.com/vuepress-reco/vuepress-theme-reco-next/issues">Issues<a/></li>
-            <li><a href="https://github.com/vuepress-reco/vuepress-theme-reco-next/discussions/1">Discussions<a/></li>
-          </ul>`,
-          style: 'font-size: 12px;'
-        },
-        {
-          type: 'hr',
-        },
-        {
-          type: 'buttongroup',
-          children: [
-            {
-              text: '打赏',
-              link: '/docs/others/donate.html'
-            }
-          ]
-        }
-      ],
-    },
-    // valineConfig 配置与 1.x 一致
-    // valineConfig: {
-    //   appId: 'xxx',
-    //   appKey: 'xxx',
-    //   placeholder: '填写邮箱可以收到回复提醒哦！',
-    //   verify: true, // 验证码服务
-    //   // notify: true,
-    //   recordIP: true,
-    //   // hideComments: true // 隐藏评论
-    // },
-  }),
-  // debug: true,
+        // valineConfig 配置与 1.x 一致
+        // valineConfig: {
+        //   appId: 'xxx',
+        //   appKey: 'xxx',
+        //   placeholder: '填写邮箱可以收到回复提醒哦！',
+        //   verify: true, // 验证码服务
+        //   // notify: true,
+        //   recordIP: true,
+        //   // hideComments: true // 隐藏评论
+        // },
+    }),
+    // debug: true,
 })
 
 

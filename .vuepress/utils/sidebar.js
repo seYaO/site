@@ -1,3 +1,6 @@
+import jstutorial from './jstutorial'
+
+
 const { genSidebarConfig } = require('./index')
 const guide = [
     {
@@ -68,10 +71,10 @@ function jstutorialData() {
 }
 
 module.exports = {
-    '/guide/': genSidebarConfig(guide),
-    '/relearnFrontEnd/': genSidebarConfig([{ title: '重学前端', children: frontend }]),
-    '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
-    '/jstutorial/': genSidebarConfig(jstutorialData(), true),
-    '/csstutorial/': genSidebarConfig([{ title: 'css3&css', children: csstutorial }]),
-    '/tooltutorial/': genSidebarConfig([{ title: 'tool工具', children: tooltutorial }]),
+    // '/guide/': genSidebarConfig(guide),
+    // '/relearnFrontEnd/': genSidebarConfig([{ title: '重学前端', children: frontend }]),
+    // '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
+    // '/jstutorial/': genSidebarConfig(jstutorialData(), true),
+    // '/csstutorial/': genSidebarConfig([{ title: 'css3&css', children: csstutorial }]),
+    // '/tooltutorial/': genSidebarConfig([{ title: 'tool工具', children: tooltutorial }]),
 }

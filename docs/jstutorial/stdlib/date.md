@@ -1,19 +1,19 @@
-# Date对象
+# Date 对象
 
-`Date`对象是 JavaScript 原生的时间库。它以1970年1月1日00:00:00作为时间的零点，可以表示的时间范围是前后各1亿天（单位为毫秒）。
+`Date`对象是 JavaScript 原生的时间库。它以国际标准时间（UTC）1970年1月1日00:00:00作为时间的零点，可以表示的时间范围是前后各1亿天（单位为毫秒）。
 
 ## 普通函数的用法
 
 `Date`对象可以作为普通函数直接调用，返回一个代表当前时间的字符串。
 
-```js
+```javascript
 Date()
 // "Tue Dec 01 2015 09:34:43 GMT+0800 (CST)"
 ```
 
 注意，即使带有参数，`Date`作为普通函数使用时，返回的还是当前时间。
 
-```js
+```javascript
 Date(2000, 1, 1)
 // "Tue Dec 01 2015 09:34:43 GMT+0800 (CST)"
 ```
@@ -24,13 +24,13 @@ Date(2000, 1, 1)
 
 `Date`还可以当作构造函数使用。对它使用`new`命令，会返回一个`Date`对象的实例。如果不加参数，实例代表的就是当前时间。
 
-```js
+```javascript
 var today = new Date();
 ```
 
 `Date`实例有一个独特的地方。其他对象求值的时候，都是默认调用`.valueOf()`方法，但是`Date`实例求值的时候，默认调用的是`toString()`方法。这导致对`Date`实例求值，返回的是一个字符串，代表该实例对应的时间。
 
-```js
+```javascript
 var today = new Date();
 
 today
@@ -45,7 +45,7 @@ today.toString()
 
 作为构造函数时，`Date`对象可以接受多种格式的参数，返回一个该参数对应的时间实例。
 
-```js
+```javascript
 // 参数为时间零点开始计算的毫秒数
 new Date(1378218728000)
 // Tue Sep 03 2013 22:32:08 GMT+0800 (CST)
@@ -64,24 +64,24 @@ new Date(2013, 0, 1, 0, 0, 0, 0)
 
 第一点，参数可以是负整数，代表1970年元旦之前的时间。
 
-```js
+```javascript
 new Date(-1378218728000)
 // Fri Apr 30 1926 17:27:52 GMT+0800 (CST)
 ```
 
 第二点，只要是能被`Date.parse()`方法解析的字符串，都可以当作参数。
 
-```js
+```javascript
 new Date('2013-2-15')
 new Date('2013/2/15')
 new Date('02/15/2013')
 new Date('2013-FEB-15')
 new Date('FEB, 15, 2013')
 new Date('FEB 15, 2013')
-new Date('Feberuary, 15, 2013')
-new Date('Feberuary 15, 2013')
+new Date('February, 15, 2013')
+new Date('February 15, 2013')
 new Date('15 Feb 2013')
-new Date('15, Feberuary, 2013')
+new Date('15, February, 2013')
 // Fri Feb 15 2013 00:00:00 GMT+0800 (CST)
 ```
 
@@ -89,14 +89,14 @@ new Date('15, Feberuary, 2013')
 
 第三，参数为年、月、日等多个整数时，年和月是不能省略的，其他参数都可以省略的。也就是说，这时至少需要两个参数，因为如果只使用“年”这一个参数，`Date`会将其解释为毫秒数。
 
-```js
+```javascript
 new Date(2013)
 // Thu Jan 01 1970 08:00:02 GMT+0800 (CST)
 ```
 
 上面代码中，2013被解释为毫秒数，而不是年份。
 
-```js
+```javascript
 new Date(2013, 0)
 // Tue Jan 01 2013 00:00:00 GMT+0800 (CST)
 new Date(2013, 0, 1)
@@ -123,7 +123,7 @@ new Date(2013, 0, 1, 0, 0, 0, 0)
 
 这些参数如果超出了正常范围，会被自动折算。比如，如果月设为`15`，就折算为下一年的4月。
 
-```js
+```javascript
 new Date(2013, 15)
 // Tue Apr 01 2014 00:00:00 GMT+0800 (CST)
 new Date(2013, 0, 0)
@@ -134,7 +134,7 @@ new Date(2013, 0, 0)
 
 参数还可以使用负数，表示扣去的时间。
 
-```js
+```javascript
 new Date(2013, -1)
 // Sat Dec 01 2012 00:00:00 GMT+0800 (CST)
 new Date(2013, 0, -1)
@@ -147,7 +147,7 @@ new Date(2013, 0, -1)
 
 类型自动转换时，`Date`实例如果转为数值，则等于对应的毫秒数；如果转为字符串，则等于对应的日期字符串。所以，两个日期实例对象进行减法运算时，返回的是它们间隔的毫秒数；进行加法运算时，返回的是两个字符串连接而成的新字符串。
 
-```js
+```javascript
 var d1 = new Date(2000, 2, 1);
 var d2 = new Date(2000, 3, 1);
 
@@ -163,7 +163,7 @@ d2 + d1
 
 `Date.now`方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。
 
-```js
+```javascript
 Date.now() // 1364026285194
 ```
 
@@ -173,7 +173,7 @@ Date.now() // 1364026285194
 
 日期字符串应该符合 RFC 2822 和 ISO 8061 这两个标准，即`YYYY-MM-DDTHH:mm:ss.sssZ`格式，其中最后的`Z`表示时区。但是，其他格式也可以被解析，请看下面的例子。
 
-```js
+```javascript
 Date.parse('Aug 9, 1995')
 Date.parse('January 26, 2011 13:51:50')
 Date.parse('Mon, 25 Dec 1995 13:30:00 GMT')
@@ -186,7 +186,7 @@ Date.parse('2011-10-10T14:48:00')
 
 如果解析失败，返回`NaN`。
 
-```js
+```javascript
 Date.parse('xxx') // NaN
 ```
 
@@ -194,7 +194,7 @@ Date.parse('xxx') // NaN
 
 `Date.UTC`方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。
 
-```js
+```javascript
 // 格式
 Date.UTC(year, month[, date[, hrs[, min[, sec[, ms]]]]])
 
@@ -217,7 +217,7 @@ Date.UTC(2011, 0, 1, 2, 3, 4, 567)
 
 `valueOf`方法返回实例对象距离时间零点（1970年1月1日00:00:00 UTC）对应的毫秒数，该方法等同于`getTime`方法。
 
-```js
+```javascript
 var d = new Date();
 
 d.valueOf() // 1362790014817
@@ -226,7 +226,7 @@ d.getTime() // 1362790014817
 
 预期为数值的场合，`Date`实例会自动调用该方法，所以可以用下面的方法计算时间的间隔。
 
-```js
+```javascript
 var start = new Date();
 // ...
 var end = new Date();
@@ -239,7 +239,7 @@ var elapsed = end - start;
 
 `toString`方法返回一个完整的日期字符串。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 
 d.toString()
@@ -254,7 +254,7 @@ d
 
 `toUTCString`方法返回对应的 UTC 时间，也就是比北京时间晚8个小时。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 
 d.toUTCString()
@@ -265,7 +265,7 @@ d.toUTCString()
 
 `toISOString`方法返回对应时间的 ISO8601 写法。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 
 d.toISOString()
@@ -278,7 +278,7 @@ d.toISOString()
 
 `toJSON`方法返回一个符合 JSON 格式的 ISO 日期字符串，与`toISOString`方法的返回结果完全相同。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 
 d.toJSON()
@@ -289,7 +289,7 @@ d.toJSON()
 
 `toDateString`方法返回日期字符串（不含小时、分和秒）。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 d.toDateString() // "Tue Jan 01 2013"
 ```
@@ -298,33 +298,113 @@ d.toDateString() // "Tue Jan 01 2013"
 
 `toTimeString`方法返回时间字符串（不含年月日）。
 
-```js
+```javascript
 var d = new Date(2013, 0, 1);
 d.toTimeString() // "00:00:00 GMT+0800 (CST)"
 ```
 
-**（7）Date.prototype.toLocaleDateString()**
+**（7）本地时间**
 
-`toLocaleDateString`方法返回一个字符串，代表日期的当地写法（不含小时、分和秒）。
+以下三种方法，可以将 Date 实例转为表示本地时间的字符串。
 
-```js
+- `Date.prototype.toLocaleString()`：完整的本地时间。
+- `Date.prototype.toLocaleDateString()`：本地日期（不含小时、分和秒）。
+- `Date.prototype.toLocaleTimeString()`：本地时间（不含年月日）。
+
+下面是用法实例。
+
+```javascript
 var d = new Date(2013, 0, 1);
+
+d.toLocaleString()
+// 中文版浏览器为"2013年1月1日 上午12:00:00"
+// 英文版浏览器为"1/1/2013 12:00:00 AM"
 
 d.toLocaleDateString()
 // 中文版浏览器为"2013年1月1日"
 // 英文版浏览器为"1/1/2013"
-```
-
-**（8）Date.prototype.toLocaleTimeString()**
-
-`toLocaleTimeString`方法返回一个字符串，代表时间的当地写法（不含年月日）。
-
-```js
-var d = new Date(2013, 0, 1);
 
 d.toLocaleTimeString()
 // 中文版浏览器为"上午12:00:00"
 // 英文版浏览器为"12:00:00 AM"
+```
+
+这三个方法都有两个可选的参数。
+
+```javascript
+dateObj.toLocaleString([locales[, options]])
+dateObj.toLocaleDateString([locales[, options]])
+dateObj.toLocaleTimeString([locales[, options]])
+```
+
+这两个参数中，`locales`是一个指定所用语言的字符串，`options`是一个配置对象。下面是`locales`的例子，分别采用`en-US`和`zh-CN`语言设定。
+
+```javascript
+var d = new Date(2013, 0, 1);
+
+d.toLocaleString('en-US') // "1/1/2013, 12:00:00 AM"
+d.toLocaleString('zh-CN') // "2013/1/1 上午12:00:00"
+
+d.toLocaleDateString('en-US') // "1/1/2013"
+d.toLocaleDateString('zh-CN') // "2013/1/1"
+
+d.toLocaleTimeString('en-US') // "12:00:00 AM"
+d.toLocaleTimeString('zh-CN') // "上午12:00:00"
+```
+
+`options`配置对象有以下属性。
+
+- `dateStyle`：可能的值为`full`、`long`、`medium`、`short`。
+- `timeStyle`：可能的值为`full`、`long`、`medium`、`short`。
+- `month`：可能的值为`numeric`、`2-digit`、`long`、`short`、`narrow`。
+- `year`：可能的值为`numeric`、`2-digit`。
+- `weekday`：可能的值为`long`、`short`、`narrow`。
+- `day`、`hour`、`minute`、`second`：可能的值为`numeric`、`2-digit`。
+- `timeZone`：可能的值为 IANA 的时区数据库。
+- `timeZoneName`：可能的值为`long`、`short`。
+- `hour12`：24小时周期还是12小时周期，可能的值为`true`、`false`。
+
+下面是用法实例。
+
+```javascript
+var d = new Date(2013, 0, 1);
+
+d.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})
+// "Tuesday, January 1, 2013"
+
+d.toLocaleDateString('en-US', {
+  day: "2-digit",
+  month: "long",
+  year: "2-digit"
+});
+// "January 01, 13"
+
+d.toLocaleTimeString('en-US', {
+  timeZone: 'UTC',
+  timeZoneName: 'short'
+})
+// "4:00:00 PM UTC"
+
+d.toLocaleTimeString('en-US', {
+  timeZone: 'Asia/Shanghai',
+  timeZoneName: 'long'
+})
+// "12:00:00 AM China Standard Time"
+
+d.toLocaleTimeString('en-US', {
+  hour12: false
+})
+// "00:00:00"
+
+d.toLocaleTimeString('en-US', {
+  hour12: true
+})
+// "12:00:00 AM"
 ```
 
 ### get 类方法
@@ -334,7 +414,6 @@ d.toLocaleTimeString()
 - `getTime()`：返回实例距离1970年1月1日00:00:00的毫秒数，等同于`valueOf`方法。
 - `getDate()`：返回实例对象对应每个月的几号（从1开始）。
 - `getDay()`：返回星期几，星期日为0，星期一为1，以此类推。
-- `getYear()`：返回距离1900的年数。
 - `getFullYear()`：返回四位的年份。
 - `getMonth()`：返回月份（0表示1月，11表示12月）。
 - `getHours()`：返回小时（0-23）。
@@ -350,14 +429,12 @@ d.toLocaleTimeString()
 - 星期：0（星期天）到 6（星期六）
 - 日期：1 到 31
 - 月份：0（一月）到 11（十二月）
-- 年份：距离1900年的年数
 
-```js
+```javascript
 var d = new Date('January 6, 2013');
 
 d.getDate() // 6
 d.getMonth() // 0
-d.getYear() // 113
 d.getFullYear() // 2013
 d.getTimezoneOffset() // -480
 ```
@@ -366,7 +443,7 @@ d.getTimezoneOffset() // -480
 
 下面是一个例子，计算本年度还剩下多少天。
 
-```js
+```javascript
 function leftDays() {
   var today = new Date();
   var endYear = new Date(today.getFullYear(), 11, 31, 23, 59, 59, 999);
@@ -386,7 +463,7 @@ function leftDays() {
 - `getUTCSeconds()`
 - `getUTCMilliseconds()`
 
-```js
+```javascript
 var d = new Date('January 6, 2013');
 
 d.getDate() // 6
@@ -400,10 +477,9 @@ d.getUTCDate() // 5
 `Date`对象提供了一系列`set*`方法，用来设置实例对象的各个方面。
 
 - `setDate(date)`：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。
-- `setYear(year)`: 设置距离1900年的年数。
 - `setFullYear(year [, month, date])`：设置四位年份。
 - `setHours(hour [, min, sec, ms])`：设置小时（0-23）。
-- `setMilliseconds()`：设置毫秒（0-999）。
+- `setMilliseconds(ms)`：设置毫秒（0-999）。
 - `setMinutes(min [, sec, ms])`：设置分钟（0-59）。
 - `setMonth(month [, date])`：设置月份（0-11）。
 - `setSeconds(sec [, ms])`：设置秒（0-59）。
@@ -411,7 +487,7 @@ d.getUTCDate() // 5
 
 这些方法基本是跟`get*`方法一一对应的，但是没有`setDay`方法，因为星期几是计算出来的，而不是设置的。另外，需要注意的是，凡是涉及到设置月份，都是从0开始算的，即`0`是1月，`11`是12月。
 
-```js
+```javascript
 var d = new Date ('January 6, 2013');
 
 d // Sun Jan 06 2013 00:00:00 GMT+0800 (CST)
@@ -419,9 +495,9 @@ d.setDate(9) // 1357660800000
 d // Wed Jan 09 2013 00:00:00 GMT+0800 (CST)
 ```
 
-`set*`方法的参数都会自动折算。以`setDate`为例，如果参数超过当月的最大天数，则向下一个月顺延，如果参数是负数，表示从上个月的最后一天开始减去的天数。
+`set*`方法的参数都会自动折算。以`setDate()`为例，如果参数超过当月的最大天数，则向下一个月顺延，如果参数是负数，表示从上个月的最后一天开始减去的天数。
 
-```js
+```javascript
 var d1 = new Date('January 6, 2013');
 
 d1.setDate(32) // 1359648000000
@@ -429,13 +505,15 @@ d1 // Fri Feb 01 2013 00:00:00 GMT+0800 (CST)
 
 var d2 = new Date ('January 6, 2013');
 
-d.setDate(-1) // 1356796800000
-d // Sun Dec 30 2012 00:00:00 GMT+0800 (CST)
+d2.setDate(-1) // 1356796800000
+d2 // Sun Dec 30 2012 00:00:00 GMT+0800 (CST)
 ```
+
+上面代码中，`d1.setDate(32)`将日期设为1月份的32号，因为1月份只有31号，所以自动折算为2月1日。`d2.setDate(-1)`表示设为上个月的倒数第二天，即12月30日。
 
 `set`类方法和`get`类方法，可以结合使用，得到相对时间。
 
-```js
+```javascript
 var d = new Date();
 
 // 将日期向后推1000天
@@ -446,7 +524,7 @@ d.setHours(d.getHours() + 6);
 d.setFullYear(d.getFullYear() - 1);
 ```
 
-`set*`系列方法除了`setTime()`和`setYear()`，都有对应的 UTC 版本，即设置 UTC 时区的时间。
+`set*`系列方法除了`setTime()`，都有对应的 UTC 版本，即设置 UTC 时区的时间。
 
 - `setUTCDate()`
 - `setUTCFullYear()`
@@ -456,7 +534,7 @@ d.setFullYear(d.getFullYear() - 1);
 - `setUTCMonth()`
 - `setUTCSeconds()`
 
-```js
+```javascript
 var d = new Date('January 6, 2013');
 d.getUTCHours() // 16
 d.setUTCHours(22) // 1357423200000
@@ -467,5 +545,5 @@ d // Sun Jan 06 2013 06:00:00 GMT+0800 (CST)
 
 ## 参考链接
 
-- Rakhitha Nimesh，[Getting Started with the Date Object](http://jspro.com/raw-javascript/beginners-guide-to-javascript-date-and-time/)
-- Ilya Kantor, [Date/Time functions](http://javascript.info/tutorial/datetime-functions)
+- Rakhitha Nimesh，[Getting Started with the Date Object](https://www.sitepoint.com/beginners-guide-to-javascript-date-and-time/)
+- Ilya Kantor, [Date/Time functions](https://javascript.info/date)

@@ -1,3 +1,12 @@
+---
+title: first page in category2
+date: 2016/12/15
+tags:
+ - tag3
+categories:
+ - category2
+---
+
 # git
 
 ## git常用

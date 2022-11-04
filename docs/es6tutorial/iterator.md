@@ -22,7 +22,7 @@ Iterator 的遍历过程是这样的。
 
 下面是一个模拟`next`方法返回值的例子。
 
-```js
+```javascript
 var it = makeIterator(['a', 'b']);
 
 it.next() // { value: "a", done: false }
@@ -51,7 +51,7 @@ function makeIterator(array) {
 
 对于遍历器对象来说，`done: false`和`value: undefined`属性都是可以省略的，因此上面的`makeIterator`函数可以简写成下面的形式。
 
-```js
+```javascript
 function makeIterator(array) {
   var nextIndex = 0;
   return {
@@ -66,7 +66,7 @@ function makeIterator(array) {
 
 由于 Iterator 只是把接口规格加到数据结构之上，所以，遍历器与它所遍历的那个数据结构，实际上是分开的，完全可以写出没有对应数据结构的遍历器对象，或者说用遍历器对象模拟出数据结构。下面是一个无限运行的遍历器对象的例子。
 
-```js
+```javascript
 var it = idMaker();
 
 it.next().value // 0
@@ -89,7 +89,7 @@ function idMaker() {
 
 如果使用 TypeScript 的写法，遍历器接口（Iterable）、指针对象（Iterator）和`next`方法返回值的规格可以描述如下。
 
-```js
+```javascript
 interface Iterable {
   [Symbol.iterator]() : Iterator,
 }
@@ -112,7 +112,7 @@ Iterator 接口的目的，就是为所有数据结构，提供了一种统一�
 
 ES6 规定，默认的 Iterator 接口部署在数据结构的`Symbol.iterator`属性，或者说，一个数据结构只要具有`Symbol.iterator`属性，就可以认为是“可遍历的”（iterable）。`Symbol.iterator`属性本身是一个函数，就是当前数据结构默认的遍历器生成函数。执行这个函数，就会返回一个遍历器。至于属性名`Symbol.iterator`，它是一个表达式，返回`Symbol`对象的`iterator`属性，这是一个预定义好的、类型为 Symbol 的特殊值，所以要放在方括号内（参见《Symbol》一章）。
 
-```js
+```javascript
 const obj = {
   [Symbol.iterator] : function () {
     return {
@@ -143,7 +143,7 @@ ES6 的有些数据结构原生具备 Iterator 接口（比如数组），即不
 
 下面的例子是数组的`Symbol.iterator`属性。
 
-```js
+```javascript
 let arr = ['a', 'b', 'c'];
 let iter = arr[Symbol.iterator]();
 
@@ -161,7 +161,7 @@ iter.next() // { value: undefined, done: true }
 
 一个对象如果要具备可被`for...of`循环调用的 Iterator 接口，就必须在`Symbol.iterator`的属性上部署遍历器生成方法（原型链上的对象具有该方法也可）。
 
-```js
+```javascript
 class RangeIterator {
   constructor(start, stop) {
     this.value = start;
@@ -191,9 +191,9 @@ for (var value of range(0, 3)) {
 
 上面代码是一个类部署 Iterator 接口的写法。`Symbol.iterator`属性对应一个函数，执行后返回当前对象的遍历器对象。
 
-下面是通过遍历器实现指针结构的例子。
+下面是通过遍历器实现“链表”结构的例子。
 
-```js
+```javascript
 function Obj(value) {
   this.value = value;
   this.next = null;
@@ -209,9 +209,8 @@ Obj.prototype[Symbol.iterator] = function() {
       var value = current.value;
       current = current.next;
       return { done: false, value: value };
-    } else {
-      return { done: true };
     }
+    return { done: true };
   }
   return iterator;
 }
@@ -232,7 +231,7 @@ for (var i of one){
 
 下面是另一个为对象添加 Iterator 接口的例子。
 
-```js
+```javascript
 let obj = {
   data: [ 'hello', 'world' ],
   [Symbol.iterator]() {
@@ -245,9 +244,8 @@ let obj = {
             value: self.data[index++],
             done: false
           };
-        } else {
-          return { value: undefined, done: true };
         }
+        return { value: undefined, done: true };
       }
     };
   }
@@ -256,7 +254,7 @@ let obj = {
 
 对于类似数组的对象（存在数值键名和`length`属性），部署 Iterator 接口，有一个简便方法，就是`Symbol.iterator`方法直接引用数组的 Iterator 接口。
 
-```js
+```javascript
 NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 // 或者
 NodeList.prototype[Symbol.iterator] = [][Symbol.iterator];
@@ -268,7 +266,7 @@ NodeList 对象是类似数组的对象，本来就具有遍历接口，可以�
 
 下面是另一个类似数组的对象调用数组的`Symbol.iterator`方法的例子。
 
-```js
+```javascript
 let iterable = {
   0: 'a',
   1: 'b',
@@ -283,7 +281,7 @@ for (let item of iterable) {
 
 注意，普通对象部署数组的`Symbol.iterator`方法，并无效果。
 
-```js
+```javascript
 let iterable = {
   a: 'a',
   b: 'b',
@@ -298,7 +296,7 @@ for (let item of iterable) {
 
 如果`Symbol.iterator`方法对应的不是遍历器生成函数（即会返回一个遍历器对象），解释引擎将会报错。
 
-```js
+```javascript
 var obj = {};
 
 obj[Symbol.iterator] = () => 1;
@@ -310,7 +308,7 @@ obj[Symbol.iterator] = () => 1;
 
 有了遍历器接口，数据结构就可以用`for...of`循环遍历（详见下文），也可以使用`while`循环遍历。
 
-```js
+```javascript
 var $iterator = ITERABLE[Symbol.iterator]();
 var $result = $iterator.next();
 while (!$result.done) {
@@ -330,7 +328,7 @@ while (!$result.done) {
 
 对数组和 Set 结构进行解构赋值时，会默认调用`Symbol.iterator`方法。
 
-```js
+```javascript
 let set = new Set().add('a').add('b').add('c');
 
 let [x,y] = set;
@@ -344,7 +342,7 @@ let [first, ...rest] = set;
 
 扩展运算符（...）也会调用默认的 Iterator 接口。
 
-```js
+```javascript
 // 例一
 var str = 'hello';
 [...str] //  ['h','e','l','l','o']
@@ -359,7 +357,7 @@ let arr = ['b', 'c'];
 
 实际上，这提供了一种简便机制，可以将任何部署了 Iterator 接口的数据结构，转为数组。也就是说，只要某个数据结构部署了 Iterator 接口，就可以对它使用扩展运算符，将其转为数组。
 
-```js
+```javascript
 let arr = [...iterable];
 ```
 
@@ -367,7 +365,7 @@ let arr = [...iterable];
 
 `yield*`后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口。
 
-```js
+```javascript
 let generator = function* () {
   yield 1;
   yield* [2,3,4];
@@ -398,7 +396,7 @@ iterator.next() // { value: undefined, done: true }
 
 字符串是一个类似数组的对象，也原生具有 Iterator 接口。
 
-```js
+```javascript
 var someString = "hi";
 typeof someString[Symbol.iterator]
 // "function"
@@ -414,7 +412,7 @@ iterator.next()  // { value: undefined, done: true }
 
 可以覆盖原生的`Symbol.iterator`方法，达到修改遍历器行为的目的。
 
-```js
+```javascript
 var str = new String("hi");
 
 [...str] // ["h", "i"]
@@ -441,16 +439,16 @@ str // "hi"
 
 ## Iterator 接口与 Generator 函数
 
-`Symbol.iterator`方法的最简单实现，还是使用下一章要介绍的 Generator 函数。
+`Symbol.iterator()`方法的最简单实现，还是使用下一章要介绍的 Generator 函数。
 
-```js
+```javascript
 let myIterable = {
   [Symbol.iterator]: function* () {
     yield 1;
     yield 2;
     yield 3;
   }
-}
+};
 [...myIterable] // [1, 2, 3]
 
 // 或者采用下面的简洁写法
@@ -469,15 +467,15 @@ for (let x of obj) {
 // "world"
 ```
 
-上面代码中，`Symbol.iterator`方法几乎不用部署任何代码，只要用 yield 命令给出每一步的返回值即可。
+上面代码中，`Symbol.iterator()`方法几乎不用部署任何代码，只要用 yield 命令给出每一步的返回值即可。
 
 ## 遍历器对象的 return()，throw()
 
-遍历器对象除了具有`next`方法，还可以具有`return`方法和`throw`方法。如果你自己写遍历器对象生成函数，那么`next`方法是必须部署的，`return`方法和`throw`方法是否部署是可选的。
+遍历器对象除了具有`next()`方法，还可以具有`return()`方法和`throw()`方法。如果你自己写遍历器对象生成函数，那么`next()`方法是必须部署的，`return()`方法和`throw()`方法是否部署是可选的。
 
-`return`方法的使用场合是，如果`for...of`循环提前退出（通常是因为出错，或者有`break`语句），就会调用`return`方法。如果一个对象在完成遍历前，需要清理或释放资源，就可以部署`return`方法。
+`return()`方法的使用场合是，如果`for...of`循环提前退出（通常是因为出错，或者有`break`语句），就会调用`return()`方法。如果一个对象在完成遍历前，需要清理或释放资源，就可以部署`return()`方法。
 
-```js
+```javascript
 function readLinesSync(file) {
   return {
     [Symbol.iterator]() {
@@ -495,9 +493,9 @@ function readLinesSync(file) {
 }
 ```
 
-上面代码中，函数`readLinesSync`接受一个文件对象作为参数，返回一个遍历器对象，其中除了`next`方法，还部署了`return`方法。下面的两种情况，都会触发执行`return`方法。
+上面代码中，函数`readLinesSync`接受一个文件对象作为参数，返回一个遍历器对象，其中除了`next()`方法，还部署了`return()`方法。下面的两种情况，都会触发执行`return()`方法。
 
-```js
+```javascript
 // 情况一
 for (let line of readLinesSync(fileName)) {
   console.log(line);
@@ -511,11 +509,11 @@ for (let line of readLinesSync(fileName)) {
 }
 ```
 
-上面代码中，情况一输出文件的第一行以后，就会执行`return`方法，关闭这个文件；情况二会在执行`return`方法关闭文件之后，再抛出错误。
+上面代码中，情况一输出文件的第一行以后，就会执行`return()`方法，关闭这个文件；情况二会在执行`return()`方法关闭文件之后，再抛出错误。
 
-注意，`return`方法必须返回一个对象，这是 Generator 规格决定的。
+注意，`return()`方法必须返回一个对象，这是 Generator 语法决定的。
 
-`throw`方法主要是配合 Generator 函数使用，一般的遍历器对象用不到这个方法。请参阅《Generator 函数》一章。
+`throw()`方法主要是配合 Generator 函数使用，一般的遍历器对象用不到这个方法。请参阅《Generator 函数》一章。
 
 ## for...of 循环
 
@@ -529,7 +527,7 @@ ES6 借鉴 C++、Java、C# 和 Python 语言，引入了`for...of`循环，作�
 
 数组原生具备`iterator`接口（即默认部署了`Symbol.iterator`属性），`for...of`循环本质上就是调用这个接口产生的遍历器，可以用下面的代码证明。
 
-```js
+```javascript
 const arr = ['red', 'green', 'blue'];
 
 for(let v of arr) {
@@ -548,7 +546,7 @@ for(let v of obj) {
 
 `for...of`循环可以代替数组实例的`forEach`方法。
 
-```js
+```javascript
 const arr = ['red', 'green', 'blue'];
 
 arr.forEach(function (element, index) {
@@ -559,7 +557,7 @@ arr.forEach(function (element, index) {
 
 JavaScript 原有的`for...in`循环，只能获得对象的键名，不能直接获取键值。ES6 提供`for...of`循环，允许遍历获得键值。
 
-```js
+```javascript
 var arr = ['a', 'b', 'c', 'd'];
 
 for (let a in arr) {
@@ -575,7 +573,7 @@ for (let a of arr) {
 
 `for...of`循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性。这一点跟`for...in`循环也不一样。
 
-```js
+```javascript
 let arr = [3, 5, 7];
 arr.foo = 'hello';
 
@@ -594,7 +592,7 @@ for (let i of arr) {
 
 Set 和 Map 结构也原生具有 Iterator 接口，可以直接使用`for...of`循环。
 
-```js
+```javascript
 var engines = new Set(["Gecko", "Trident", "Webkit", "Webkit"]);
 for (var e of engines) {
   console.log(e);
@@ -617,7 +615,7 @@ for (var [name, value] of es6) {
 
 上面代码演示了如何遍历 Set 结构和 Map 结构。值得注意的地方有两个，首先，遍历的顺序是按照各个成员被添加进数据结构的顺序。其次，Set 结构遍历时，返回的是一个值，而 Map 结构遍历时，返回的是一个数组，该数组的两个成员分别为当前 Map 成员的键名和键值。
 
-```js
+```javascript
 let map = new Map().set('a', 1).set('b', 2);
 for (let pair of map) {
   console.log(pair);
@@ -642,7 +640,7 @@ for (let [key, value] of map) {
 
 这三个方法调用后生成的遍历器对象，所遍历的都是计算生成的数据结构。
 
-```js
+```javascript
 let arr = ['a', 'b', 'c'];
 for (let pair of arr.entries()) {
   console.log(pair);
@@ -656,7 +654,7 @@ for (let pair of arr.entries()) {
 
 类似数组的对象包括好几类。下面是`for...of`循环用于字符串、DOM NodeList 对象、`arguments`对象的例子。
 
-```js
+```javascript
 // 字符串
 let str = "hello";
 
@@ -684,7 +682,7 @@ printArgs('a', 'b');
 
 对于字符串来说，`for...of`循环还有一个特点，就是会正确识别 32 位 UTF-16 字符。
 
-```js
+```javascript
 for (let x of 'a\uD83D\uDC0A') {
   console.log(x);
 }
@@ -694,7 +692,7 @@ for (let x of 'a\uD83D\uDC0A') {
 
 并不是所有类似数组的对象都具有 Iterator 接口，一个简便的解决方法，就是使用`Array.from`方法将其转为数组。
 
-```js
+```javascript
 let arrayLike = { length: 2, 0: 'a', 1: 'b' };
 
 // 报错
@@ -712,7 +710,7 @@ for (let x of Array.from(arrayLike)) {
 
 对于普通的对象，`for...of`结构不能直接使用，会报错，必须部署了 Iterator 接口后才能使用。但是，这样情况下，`for...in`循环依然可以用来遍历键名。
 
-```js
+```javascript
 let es6 = {
   edition: 6,
   committee: "TC39",
@@ -736,7 +734,7 @@ for (let e of es6) {
 
 一种解决方法是，使用`Object.keys`方法将对象的键名生成一个数组，然后遍历这个数组。
 
-```js
+```javascript
 for (var key of Object.keys(someObject)) {
   console.log(key + ': ' + someObject[key]);
 }
@@ -744,7 +742,9 @@ for (var key of Object.keys(someObject)) {
 
 另一个方法是使用 Generator 函数将对象重新包装一下。
 
-```js
+```javascript
+const obj = { a: 1, b: 2, c: 3 }
+
 function* entries(obj) {
   for (let key of Object.keys(obj)) {
     yield [key, obj[key]];
@@ -763,7 +763,7 @@ for (let [key, value] of entries(obj)) {
 
 以数组为例，JavaScript 提供多种遍历语法。最原始的写法就是`for`循环。
 
-```js
+```javascript
 for (var index = 0; index < myArray.length; index++) {
   console.log(myArray[index]);
 }
@@ -771,7 +771,7 @@ for (var index = 0; index < myArray.length; index++) {
 
 这种写法比较麻烦，因此数组提供内置的`forEach`方法。
 
-```js
+```javascript
 myArray.forEach(function (value) {
   console.log(value);
 });
@@ -781,7 +781,7 @@ myArray.forEach(function (value) {
 
 `for...in`循环可以遍历数组的键名。
 
-```js
+```javascript
 for (var index in myArray) {
   console.log(myArray[index]);
 }
@@ -797,7 +797,7 @@ for (var index in myArray) {
 
 `for...of`循环相比上面几种做法，有一些显著的优点。
 
-```js
+```javascript
 for (let value of myArray) {
   console.log(value);
 }
@@ -809,7 +809,7 @@ for (let value of myArray) {
 
 下面是一个使用 break 语句，跳出`for...of`循环的例子。
 
-```js
+```javascript
 for (var n of fibonacci) {
   if (n > 1000)
     break;
