@@ -19,7 +19,7 @@ yarn deploy # 或 npm run deploy
 ## 搭建相关文档
 
 - [搭建步骤](https://segmentfault.com/a/1190000017207205)
-- [VuePress中文网](https://vuepress.docschina.org/)
+- [VuePress中文网](https://vuepress.vuejs.org/zh/)
 - [Markdown 语法整理大集合](https://www.jianshu.com/p/b03a8d7b1719)
 - [Emoji 大全](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) 
 
