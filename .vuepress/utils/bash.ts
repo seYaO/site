@@ -1,6 +1,6 @@
 export default [
     {
-        text: 'Bash',
+        text: 'Bash 脚本教程',
         children: [
             { text: '简介', link: '/docs/bash/intro' },
             { text: '基本语法', link: '/docs/bash/grammar' },
@@ -22,24 +22,30 @@ export default [
             { text: 'mktemp 命令，trap 命令', link: '/docs/bash/mktemp' },
             { text: '启动环境', link: '/docs/bash/startup' },
             { text: '命令提示符', link: '/docs/bash/prompt' },
+            // {
+            //     text: '档案',
+            //     children: [
+            //         { text: '简介', link: '/docs/bash/archives' },
+            //     ]
+            // },
+            // {
+            //     text: '命令',
+            //     children: [
+            //         { text: '简介', link: '/docs/bash/archives' },
+            //     ]
+            // },
+            // {
+            //     text: '删除',
+            //     children: [
+            //         { text: '标准I/O', link: '/docs/bash/archives/deleted/stdio' },
+            //     ]
+            // },
         ]
     },
-    // {
-    //     text: '档案',
-    //     children: [
-    //         { text: '简介', link: '/docs/bash/archives' },
-    //     ]
-    // },
-    // {
-    //     text: '命令',
-    //     children: [
-    //         { text: '简介', link: '/docs/bash/archives' },
-    //     ]
-    // },
-    // {
-    //     text: '删除',
-    //     children: [
-    //         { text: '标准I/O', link: '/docs/bash/archives/deleted/stdio' },
-    //     ]
-    // },
+    {
+        text: '链接',
+        children: [
+            { text: '代码仓库', link: 'https://github.com/wangdoc/bash-tutorial' },
+        ]
+    },
 ]

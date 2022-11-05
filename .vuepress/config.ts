@@ -35,18 +35,6 @@ export default defineUserConfig({
         docsDir: 'example',
         lastUpdatedText: '最近更新',
         // series 为原 sidebar 侧边栏配置
-        // series: {
-        //       '/docs/theme-reco/': [
-        //         {
-        //           text: 'module one',
-        //           children: ['home', 'theme']
-        //         },
-        //         {
-        //           text: 'module two',
-        //           children: ['api', 'plugin']
-        //         }
-        //       ]
-        // },
         series: sidebar,
         // subSidebar: 'auto',
         // 导航栏配置
@@ -55,6 +43,12 @@ export default defineUserConfig({
                 { text: '首页', link: '/' },
                 // { text: '分类', link: '/categories/reco/1/' },
                 // { text: '标签', link: '/tags/tag1/1/' },
+                {
+                    text: '常用',
+                    children: [
+                        { text: 'CSS3', link: '/docs/csstutorial/' },
+                    ]
+                },
                 {
                     text: '文档',
                     children: [

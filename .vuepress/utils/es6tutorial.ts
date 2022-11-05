@@ -1,8 +1,45 @@
 export default [
     {
-        text: '入门篇',
+        text: 'ES6 教程',
         children: [
-            { text: '导论', link: '/docs/jstutorial/basic/introduction' },
+            { text: 'ECMAScript 6 简介', link: '/docs/es6tutorial/intro' },
+            { text: 'let 和 const 命令', link: '/docs/es6tutorial/let' },
+            { text: '变量的解构赋值', link: '/docs/es6tutorial/destructuring' },
+            { text: '字符串的扩展', link: '/docs/es6tutorial/string' },
+            { text: '字符串的新增方法', link: '/docs/es6tutorial/string-methods' },
+            { text: '正则的扩展', link: '/docs/es6tutorial/regex' },
+            { text: '数值的扩展', link: '/docs/es6tutorial/number' },
+            { text: '函数的扩展', link: '/docs/es6tutorial/function' },
+            { text: '数组的扩展', link: '/docs/es6tutorial/array' },
+            { text: '对象的扩展', link: '/docs/es6tutorial/object' },
+            { text: '对象的新增方法', link: '/docs/es6tutorial/object-methods' },
+            { text: '运算符的扩展', link: '/docs/es6tutorial/operator' },
+            { text: 'Symbol', link: '/docs/es6tutorial/symbol' },
+            { text: 'Set 和 Map 数据结构', link: '/docs/es6tutorial/set-map' },
+            { text: 'Proxy', link: '/docs/es6tutorial/proxy' },
+            { text: 'Reflect', link: '/docs/es6tutorial/reflect' },
+            { text: 'Promise 对象', link: '/docs/es6tutorial/promise' },
+            { text: 'Iterator 和 for...of 循环', link: '/docs/es6tutorial/iterator' },
+            { text: 'Generator 函数的语法', link: '/docs/es6tutorial/generator' },
+            { text: 'Generator 函数的异步应用', link: '/docs/es6tutorial/generator-async' },
+            { text: 'async 函数', link: '/docs/es6tutorial/async' },
+            { text: 'Class 的基本语法', link: '/docs/es6tutorial/class' },
+            { text: 'Class 的继承', link: '/docs/es6tutorial/class-extends' },
+            { text: 'Module 的语法', link: '/docs/es6tutorial/module' },
+            { text: 'Module 的加载实现', link: '/docs/es6tutorial/module-loader' },
+            { text: '编程风格', link: '/docs/es6tutorial/style' },
+            { text: '读懂规格', link: '/docs/es6tutorial/spec' },
+            { text: '异步遍历器', link: '/docs/es6tutorial/async-iterator' },
+            { text: 'ArrayBuffer', link: '/docs/es6tutorial/arraybuffer' },
+            { text: '最新提案', link: '/docs/es6tutorial/proposals' },
+            { text: 'Decorator', link: '/docs/es6tutorial/decorator' },
+            { text: '参考链接', link: '/docs/es6tutorial/reference' },
+        ]
+    },
+    {
+        text: '链接',
+        children: [
+            { text: '代码仓库', link: 'https://github.com/wangdoc/es6-tutorial' },
         ]
     },
 ]

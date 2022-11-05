@@ -1,8 +1,7 @@
 ---
-pageClass: custom-border
+title: Flex 布局教程：语法篇
 ---
 
-# Flex 布局教程：语法篇
 
 网页布局（layout）是 CSS 的一个重点应用。
 
