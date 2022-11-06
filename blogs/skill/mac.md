@@ -1,4 +1,11 @@
-# mac快捷键
+---
+title: mac快捷键
+date: 2022/11/05
+tags:
+ - mac
+categories:
+ - 命令
+---
 
 ## Mac键盘符号和修饰键说明
 - `⌘` Command

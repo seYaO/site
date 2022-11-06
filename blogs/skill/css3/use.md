@@ -1,8 +1,9 @@
 ---
-pageClass: custom-border
+title: CSS3常用功能的写法
+date: 2022/11/05
+categories:
+ - css3
 ---
-
-# CSS3常用功能的写法
 
 随着浏览器的升级，CSS3已经可以投入实际应用了。
 

@@ -1,4 +1,11 @@
-# linux基础命令
+---
+title: linux基础命令
+date: 2022/11/05
+tags:
+ - linux
+categories:
+ - 命令
+---
 
 ## linux基础命令
 - sudo  -s		进入绝对用户权限

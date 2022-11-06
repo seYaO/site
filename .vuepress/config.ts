@@ -1,10 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import recoTheme from 'vuepress-theme-reco'
-
-// import jstutorial from './utils/jstutorial'
 import sidebar from './utils/sidebar'
-console.log('sidebar',sidebar)
 
 export default defineUserConfig({
     title: 'seYa\'s blog',
@@ -59,6 +56,7 @@ export default defineUserConfig({
                         { text: 'C语言', link: '/docs/clang/' },
                         { text: 'Bash', link: '/docs/bash/' },
                         { text: 'SSH', link: '/docs/ssh/' },
+                        { text: '八股文', link: '/docs/learntutorial/' },
                     ]
                 },
             ],

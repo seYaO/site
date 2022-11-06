@@ -6,6 +6,7 @@ import htmltutorial from './htmltutorial'
 import webapi from './webapi'
 import clang from './clang'
 import csstutorial from './csstutorial'
+import learntutorial from './learntutorial'
 
 
 const { genSidebarConfig } = require('./index')
@@ -37,6 +38,7 @@ export default {
     '/docs/bash/': bash,
     '/docs/ssh/': ssh,
     '/docs/csstutorial/': csstutorial,
+    '/docs/learntutorial/': learntutorial,
 
 
 

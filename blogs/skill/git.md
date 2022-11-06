@@ -1,15 +1,12 @@
 ---
-title: first page in category2
-date: 2016/12/15
+title: git常用命令
+date: 2022/11/05
 tags:
- - tag3
+ - git
 categories:
- - category2
+ - 命令
 ---
 
-# git
-
-## git常用
 
 ### 初始化
 ```bash
