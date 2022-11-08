@@ -2,9 +2,8 @@ export default [
     {
         text: '八股文',
         children: [
-            { text: '学习路线', link: '/docs/learntutorial/interview/00' },
-            { text: '面试准备', link: '/docs/learntutorial/interview/01' },
-            { text: '程序员面试软技能', link: '/docs/learntutorial/interview/02' },
+            { text: '学习路线', link: '/docs/learntutorial/interview/01' },
+            { text: '面试准备', link: '/docs/learntutorial/interview/02' },
             { text: 'HTML篇', link: '/docs/learntutorial/interview/03' },
             { text: 'CSS篇', link: '/docs/learntutorial/interview/04' },
             { text: 'JavaScript篇', link: '/docs/learntutorial/interview/05' },
