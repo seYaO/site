@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "我的个人博客和一些文档",
+  "scripts": {
+    "dev": "vuepress dev .",
+    "build": "vuepress build .",
+    "deploy": "bash deploy.sh",
+    "surge": "bash surge.sh"
+  },
+  "dependencies": {
+    "vuepress": "2.0.0-beta.51",
+    "vuepress-theme-reco": "2.0.0-beta.41"
+}
+}
