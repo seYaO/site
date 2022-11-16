@@ -5,6 +5,7 @@
 node_modules
 dist
 vuepress
+yarn.lock
 
 # local env files
 .env.local
