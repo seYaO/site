@@ -1,7 +1,0 @@
-
-const txt = [
-    {
-        "title": "",
-        "analyze": []
-    }
-]
