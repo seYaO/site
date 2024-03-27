@@ -1,0 +1,59 @@
+# Nuxt 3 Minimal Starter
+
+[nuxt](https://nuxt.com/)
+[nuxt中文](https://ezdoc.cn/docs/nuxtjs)
+[blog参考](https://juejin.cn/post/7232120266804969528?searchId=202403271637205D8FDC34CECA0589FAD3)
+
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# Setup
+npm install
+
+# Development Server
+npm run dev
+
+# Production
+npm run build
+npm run generate
+npm run preview
+
+```
+
+## 目录
+
+```shell
+├── .nuxt           # 开发目录 -- Nuxt 框架帮助生成的文件夹这其实就是当前运行的项目
+├── .output         # 输出目录 -- Nuxt 打包后的文件目录
+├── node_modules    # Node模块目录
+├── src             # 项目入口
+│ ├── assets          # 资产目录 -- 静态文件的存储位置 （参与打包）[通常包含：样式表（CSS、SASS 等）、字体、图片]
+│ ├── components      # 组件目录
+│ ├── composables     # 可组合项 -- 通过 js 逻辑目录 （hooks）
+│ ├── content         # 内容模块 -- 静态文档目录 [解析 .md、.yml、.csv 和 .json 文件]
+│ ├── layouts         # 布局目录
+│ ├── middleware      # 中间件目录 -- 比如 auth 权限认证
+│ ├── modules         # 模块目录
+│ ├── pages           # 页面目录
+│ ├── plugins         # 插件目录
+│ ├── public          # 公共目录 -- 项目根静态资源 （不参与打包）
+│ ├── server          # 服务器端目录
+│ ├── utils           # 工具目录
+│ └── app.vue         # 应用程序主页面
+├── .env      # 环境变量文件
+├── .gitignore      # git忽略配置
+├── .nuxtignore     # 构建阶段忽略配置
+├── app.config.ts   # App配置文件
+├── nuxt.config.ts  # Nuxt 配置文件
+├── package.json    # 项目包文件  
+├── README.md
+└── tsconfig.json   # TypeScript 配置文件
+
+```
+
+
+
