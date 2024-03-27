@@ -1,8 +1,5 @@
 # Nuxt 3 Minimal Starter
 
-[nuxt](https://nuxt.com/)
-[nuxt中文](https://ezdoc.cn/docs/nuxtjs)
-[blog参考](https://juejin.cn/post/7232120266804969528?searchId=202403271637205D8FDC34CECA0589FAD3)
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
@@ -55,5 +52,8 @@ npm run preview
 
 ```
 
+## 参考链接
 
-
+- [nuxt](https://nuxt.com/)
+- [nuxt中文](https://ezdoc.cn/docs/nuxtjs)
+- [blog参考](https://juejin.cn/post/7232120266804969528?searchId=202403271637205D8FDC34CECA0589FAD3)
