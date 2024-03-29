@@ -11,11 +11,22 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@iconify-json/heroicons": "^1.1.20",
+    "@iconify-json/logos": "^1.1.42",
+    "@iconify-json/octicon": "^1.1.52",
+    "@iconify-json/ph": "^1.1.11",
+    "@iconify-json/simple-icons": "^1.1.97",
+    "@iconify-json/uil": "^1.1.8",
+    "@nuxt/content": "^2.12.1",
+    "@nuxt/fonts": "^0.5.1",
+    "@nuxt/image": "^1.4.0",
+    "@nuxt/ui": "^2.15.0",
+    "@nuxt/ui-pro": "^1.1.0",
     "nuxt": "^3.11.1",
+    "prettier": "^3.2.5",
+    "sass": "^1.72.0",
+    "vitepress": "^1.0.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
-  },
-  "devDependencies": {
-    "@nuxt/content": "^2.12.1"
   }
 }

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src/",
   app: {
-    baseURL: "/site/", 
+    baseURL: "/site/",
     head: {
       title: "seYa 的网站", //网站标题
       meta: [
@@ -23,7 +23,55 @@ export default defineNuxtConfig({
       bodyAttrs: { class: "font-sans" },
     },
   },
-  modules: [
-    '@nuxt/content'
+  // extends: ["@nuxt/ui-pro"],
+  // extends: ["vitepress"],
+  modules: ["@nuxt/content", "@nuxt/ui"],
+  colorMode: {
+    preference: "dark",
+  },
+  ui: {
+    global: true,
+    icons: ["simple-icons", "ph", "uil", "heroicons", "octicon", "logos"],
+  },
+  content: {
+    highlight: {
+      theme: {
+        // // Default theme (same as single string)
+        // default: 'vitesse-light',
+        // // Theme used if `html.dark`
+        // dark: 'vitesse-dark',
+        // // Theme used if `html.sepia`
+        // sepia: 'monokai',
+        default: "material-theme-lighter",
+        dark: "material-theme-palenight",
+      },
+      langs: ["js", "ts", "vue", "css", "scss", "sass", "html", "bash", "md", "mdc", "json"],
+      preload: ["c", "cpp", "java"],
+    },
+    markdown: {
+      tags: {
+        // p:'MyCustomParagraph'
+      },
+      // Object syntax can be used to override default options
+      // remarkPlugins: {
+      //   // Override remark-emoji options
+      //   'remark-emoji': {
+      //     emoticon: true
+      //   },
+      //   // Disable remark-gfm
+      //   'remark-gfm': false,
+      //   // Add remark-oembed
+      //   'remark-oembed': {
+      //     // Options
+      //   }
+      // },
+    },
+  },
+  css: [
+    // '@unocss/reset/tailwind.css',
+    // '@/assets/styles/global.scss',
+    // '@/assets/styles/theme.css',
+    // '@/assets/styles/transition.css',
+    // '@/assets/styles/markdown.scss',
   ],
-})
+});

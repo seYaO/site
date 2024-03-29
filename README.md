@@ -1,6 +1,5 @@
 # Nuxt 3 Minimal Starter
 
-
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
@@ -18,6 +17,13 @@ npm run dev
 npm run build
 npm run generate
 npm run preview
+
+# 安装插件
+npm install @nuxt/content
+# 样式预编译器
+npm install sass
+# 格式化代码
+npm install prettier
 
 ```
 
@@ -46,10 +52,18 @@ npm run preview
 ├── .nuxtignore     # 构建阶段忽略配置
 ├── app.config.ts   # App配置文件
 ├── nuxt.config.ts  # Nuxt 配置文件
-├── package.json    # 项目包文件  
+├── package.json    # 项目包文件
 ├── README.md
 └── tsconfig.json   # TypeScript 配置文件
 
+```
+
+## content 目录
+
+```shell
+├── blogs    # 博客，文章
+├── docs     # 文档
+└── index.md
 ```
 
 ## 参考链接
@@ -57,3 +71,10 @@ npm run preview
 - [nuxt](https://nuxt.com/)
 - [nuxt中文](https://ezdoc.cn/docs/nuxtjs)
 - [blog参考](https://juejin.cn/post/7232120266804969528?searchId=202403271637205D8FDC34CECA0589FAD3)
+- [踩坑记录：nuxt3 - ssg 重构我的前端导航网站](https://juejin.cn/post/7249205118533009469)
+- [https://antfu.me/](https://antfu.me/)
+- [@nuxt/content](https://content.nuxt.com/)
+- [@nuxt/ui-pro](https://ui.nuxt.com/pro)
+
+- [令人愉快的 Nuxt3 教程 (一): 应用的创建与配置](https://juejin.cn/post/7114476679598178312)
+- [令人愉快的 Nuxt3 教程 (二): 快速轻松地搭建博客](https://juejin.cn/post/7117806971226423304)
