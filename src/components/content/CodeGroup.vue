@@ -6,9 +6,7 @@
         <span>{{ tab.label }}</span>
       </button>
     </div>
-    <div :class="ui.body">
-      <component :is="selectedTab?.component" :key="selectedIndex" hide-header />
-    </div>
+    <component :is="selectedTab?.component" :key="selectedIndex" hide-header />
   </div>
 </template>
 

@@ -3,9 +3,9 @@
     <!-- <NuxtWelcome /> -->
     <!-- <ContentDoc path="/blogs/flex-grammar" /> -->
     <!-- <ContentDoc /> -->
-    <!-- <UMain> -->
-    <NuxtPage />
-    <!-- </UMain> -->
+    <UMain>
+      <NuxtPage />
+    </UMain>
   </div>
 </template>
 
