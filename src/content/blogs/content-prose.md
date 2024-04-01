@@ -8,7 +8,7 @@ date: 2024/04/01
 ### Callout
 
 ::callout
-This is a `callout` with full **markdown** support. It can be used to link to [another page](/pro/prose/card).
+This is a `callout` with full **markdown** support. It can be used to link to [another page](https://ui.nuxt.com/pro/prose/card).
 ::
 
 ::callout{icon="i-heroicons-light-bulb"}
