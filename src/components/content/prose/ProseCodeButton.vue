@@ -21,6 +21,7 @@ const icon = ref(ui.value.icon.copy);
 
 function copy() {
   clipboard.copy(props.code, { title: "Copied to clipboard!" });
+  console.log("clipboard", clipboard);
 
   icon.value = ui.value.icon.copied;
 
