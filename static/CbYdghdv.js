@@ -1,0 +1,1 @@
+import{g as t,I as l,bB as m,bC as r,j as e,o as p,s as u,m as c,bD as d,T as i,k as f}from"./CJEpAnC7.js";const V=t({__name:"Modals.client",setup(_){const o=l(m),{isOpen:a}=r();return(k,n)=>e(o)?(p(),u(i(e(o).component),c({key:0},e(o).props,{modelValue:e(a),"onUpdate:modelValue":n[0]||(n[0]=s=>d(a)?a.value=s:null)}),null,16,["modelValue"])):f("",!0)}});export{V as default};
