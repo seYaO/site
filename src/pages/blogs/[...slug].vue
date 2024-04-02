@@ -1,81 +1,104 @@
 <template>
-  <UPage
-    :ui="{
-      right: 'sticky top-[--header-height] bg-background/75 backdrop-blur group -mx-4 sm:-mx-6 px-4 sm:px-6 lg:px-4 lg:-mx-4 overflow-y-auto max-h-[calc(100vh-var(--header-height))] z-10',
-    }">
-    <UPageHeader v-bind="page">
-      <template #headline>
-        <!-- <UBreadcrumb :links="breadcrumb" /> -->
-      </template>
-    </UPageHeader>
-
-    <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
-      <ContentRenderer v-if="page && page.body" :value="page" />
-    </UPageBody>
-
-    <template v-if="page.toc !== false" #right>
-      <UContentToc :links="page.body?.toc?.links" :ui="{ wrapper: '' }">
-        <template #bottom>
-          <div class="hidden lg:block space-y-6" :class="{ '!mt-6': page.body?.toc?.links?.length }">
-            <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
+  <UContainer>
+    <UPage>
+      <UPageHeader :title="article.title" :description="article.description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
+        <template #headline>
+          <UBreadcrumb :links="[{ label: 'Blog', icon: 'i-ph-newspaper-duotone', to: '/blogs' }, { label: article.title }]" />
+          <div class="flex items-center space-x-2">
+            <span>
+              {{ article.category }}
+            </span>
+            <span class="text-gray-500 dark:text-gray-400">
+              &middot;&nbsp;&nbsp;
+              <time>{{ formatDateByLocale("en", article.date) }}</time>
+            </span>
           </div>
         </template>
-      </UContentToc>
-    </template>
-  </UPage>
+
+        <div class="mt-4 flex flex-wrap items-center gap-6">
+          <UButton v-for="(author, index) in article.authors" :key="index" :to="author.link" target="_blank" color="white" variant="ghost" class="-my-1.5 -mx-2.5">
+            <UAvatar :src="author.avatarUrl" :alt="author.name" />
+
+            <div class="text-left">
+              <p class="font-medium">
+                {{ author.name }}
+              </p>
+              <p class="text-gray-500 dark:text-gray-400 leading-4">
+                {{ `@${author.link.split("/").pop()}` }}
+              </p>
+            </div>
+          </UButton>
+        </div>
+      </UPageHeader>
+
+      <UPage>
+        <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
+          <ContentRenderer v-if="article && article.body" :value="article" />
+
+          <div class="flex items-center justify-between mt-12 not-prose">
+            <NuxtLink href="/blogs" class="text-primary">← Back to blog</NuxtLink>
+          </div>
+
+          <!-- <hr v-if="surround?.length" /> -->
+
+          <!-- <UContentSurround :surround="surround" /> -->
+        </UPageBody>
+
+        <template #right>
+          <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links">
+            <template #bottom>
+              <div class="hidden lg:block space-y-6">
+                <UDivider type="dashed" />
+              </div>
+            </template>
+          </UContentToc>
+        </template>
+      </UPage>
+    </UPage>
+  </UContainer>
 </template>
 
 <script setup lang="ts">
+import { withoutTrailingSlash, joinURL } from "ufo";
 import type { NavItem } from "@nuxt/content/dist/runtime/types";
 
 const navigation = inject<Ref<NavItem[]>>("navigation");
 
 const route = useRoute();
-const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
-console.log("page.value.body", page.value.body);
+const { copy } = useCopyToClipboard();
 
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: "Page not found", fatal: true });
+const { data: article } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
+if (!article.value) {
+  throw createError({ statusCode: 404, statusMessage: "Article not found", fatal: true });
 }
 
-const breadcrumb = computed(() => {
-  const links = mapContentNavigation(findPageBreadcrumb(navigation.value, page.value)).map(link => ({
-    label: link.label,
-    to: link.to,
-  }));
+// const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('/blog')
+//   .where({ _extension: 'md' })
+//   .without(['body', 'excerpt'])
+//   .sort({ date: -1 })
+//   .findSurround(withoutTrailingSlash(route.path))
+// )
 
-  // if (route.path.startsWith('/docs/bridge') || route.path.startsWith('/docs/migration')) {
-  //   links.splice(1, 0, {
-  //     label: 'Upgrade Guide',
-  //     to: '/docs/getting-started/upgrade'
-  //   })
-  // }
-
-  return links;
+useSeoMeta({
+  title: article.value.head?.title || article.value.title,
+  description: article.value.head?.description || article.value.description,
 });
 
-// const titleTemplate = computed(() => {
-//   if (page.value.titleTemplate) return page.value.titleTemplate;
-//   const titleTemplate = navKeyFromPath(route.path, "titleTemplate", navigation.value);
-//   if (titleTemplate) return titleTemplate;
-//   return "%s · Nuxt";
-// });
+const title = article.value.head?.title || article.value.title;
+const description = article.value.head?.description || article.value.description;
+useSeoMeta({
+  titleTemplate: "%s · Nuxt Blog",
+  title,
+  description,
+  ogDescription: description,
+  ogTitle: `${title} · Nuxt Blog`,
+});
 
-const title = page.value.head?.title || page.value.title;
-const description = page.value.head?.description || page.value.description;
-
-// useSeoMeta({
-//   titleTemplate,
-//   title,
-//   description,
-//   ogDescription: description,
-//   ogTitle: titleTemplate.value?.includes("%s") ? titleTemplate.value.replace("%s", title) : title,
-// });
-
-// defineOgImage({
-//   component: "Blogs",
-//   title,
-//   description,
-//   headline: breadcrumb.value.length ? breadcrumb.value.map(link => link.label).join(" > ") : "",
-// });
+if (article.value.image) {
+  const site = useSiteConfig();
+  useSeoMeta({
+    ogImage: joinURL(site.url, article.value.image),
+    twitterImage: joinURL(site.url, article.value.image),
+  });
+}
 </script>

@@ -1,8 +1,16 @@
 ---
 title: markdown 扩展组件
-date: 2024/04/01
 description: markdown 扩展组件的使用介绍
 navigation.icon: i-ph-info-duotone
+# navigation: false
+# image: /assets/blog/v3.11.png
+authors:
+  - name: Daniel Roe
+    avatarUrl: https://github.com/danielroe.png
+    link: https://twitter.com/danielcroe
+    twitter: danielcroe
+date: 2024-03-16T10:00:00.000Z
+category: Release
 ---
 
 ## Callout

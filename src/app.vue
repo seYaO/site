@@ -7,6 +7,8 @@
     <UMain>
       <NuxtPage />
     </UMain>
+
+    <ApFooter />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   srcDir: "src/",
   app: {
     /**
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", href: "/logo.png" }],
       noscript: [{ children: "JavaScript is required" }],
       htmlAttrs: { lang: "zh-CN" },
-      bodyAttrs: { class: "font-sans" },
+      // bodyAttrs: { class: "font-sans" },
     },
   },
   experimental: {
@@ -83,11 +83,5 @@ export default defineNuxtConfig({
       // },
     },
   },
-  css: [
-    // '@unocss/reset/tailwind.css',
-    // '@/assets/styles/global.scss',
-    // '@/assets/styles/theme.css',
-    // '@/assets/styles/transition.css',
-    // '@/assets/styles/markdown.scss',
-  ],
+  css: ["@/assets/css/main.css", "@/assets/css/scrollbars.css"],
 });
