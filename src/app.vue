@@ -1,8 +1,9 @@
 <template>
   <div>
-    <!-- <NuxtWelcome /> -->
-    <!-- <ContentDoc path="/blogs/flex-grammar" /> -->
-    <!-- <ContentDoc /> -->
+    <NuxtLoadingIndicator />
+
+    <ApHeader :links="headerLinks" />
+
     <UMain>
       <NuxtPage />
     </UMain>
@@ -12,4 +13,5 @@
 <script setup lang="ts">
 const { path } = useRoute();
 console.log("path", path);
+const { headerLinks, searchGroups, searchLinks } = useNavigation();
 </script>

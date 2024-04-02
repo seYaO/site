@@ -1,11 +1,11 @@
 ---
 title: markdown 扩展组件
 date: 2024/04/01
+description: markdown 扩展组件的使用介绍
+navigation.icon: i-ph-info-duotone
 ---
 
-# markdown 扩展组件
-
-### Callout
+## Callout
 
 ::callout
 This is a `callout` with full **markdown** support. It can be used to link to [another page](https://ui.nuxt.com/pro/prose/card).

@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src/",
   app: {
+    /**
+     * _nuxt /* 资源 404
+     * 重构后发现，打包生成的js、css文件全部404，但是查看 "gh-pages" 分支，这个文件确实是存在的，查阅资料后发现，这是因为触发了Github.io的 content-security-policy（内容安全策略），所以被禁止访问了。
+     */
+    buildAssetsDir: "static", // 修改站点资产的文件夹名称，默认是_nuxt
     baseURL: "/site/",
     head: {
       title: "seYa 的网站", //网站标题
@@ -17,15 +22,19 @@ export default defineNuxtConfig({
       ],
 
       // 网站link，可以在这里引入css和icon等
-      link: [{ rel: "icon", href: "logo.png" }],
+      link: [{ rel: "icon", href: "/logo.png" }],
       noscript: [{ children: "JavaScript is required" }],
       htmlAttrs: { lang: "zh-CN" },
       bodyAttrs: { class: "font-sans" },
     },
   },
-  // extends: ["@nuxt/ui-pro"],
-  // extends: ["vitepress"],
-  modules: ["@nuxt/content", "@nuxt/ui"],
+  experimental: {
+    /**
+     * _payload.json 文件 404
+     */
+    payloadExtraction: false, // 启用此选项时（默认情况下）提取使用nuxt generate生成的页面的有效负载
+  },
+  modules: ["@nuxt/content", "@nuxt/ui", "@nuxt/image", "@vueuse/nuxt"],
   colorMode: {
     preference: "dark",
   },
@@ -34,6 +43,13 @@ export default defineNuxtConfig({
     icons: ["simple-icons", "ph", "uil", "heroicons", "octicon", "logos"],
   },
   content: {
+    api: {
+      /**
+       * 默认配置 '/api/_content'
+       * 因为触发了Github.io的 content-security-policy（内容安全策略），禁止访问'/api/_content'
+       */
+      baseURL: "/api/content",
+    },
     highlight: {
       theme: {
         // // Default theme (same as single string)

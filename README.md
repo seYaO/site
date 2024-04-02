@@ -70,11 +70,17 @@ npm install prettier
 
 - [nuxt](https://nuxt.com/)
 - [nuxt中文](https://ezdoc.cn/docs/nuxtjs)
-- [blog参考](https://juejin.cn/post/7232120266804969528?searchId=202403271637205D8FDC34CECA0589FAD3)
-- [踩坑记录：nuxt3 - ssg 重构我的前端导航网站](https://juejin.cn/post/7249205118533009469)
-- [https://antfu.me/](https://antfu.me/)
 - [@nuxt/content](https://content.nuxt.com/)
 - [@nuxt/ui-pro](https://ui.nuxt.com/pro)
+- [@nuxt/ui](https://ui.nuxt.com/)
+- [@nuxt/image](https://image.nuxt.com/)
+- [devtools: { enabled: true }](https://devtools.nuxt.com/)
+
+
+- [blog参考](https://juejin.cn/post/7232120266804969528)
+- [踩坑记录：nuxt3 - ssg 重构我的前端导航网站](https://juejin.cn/post/7249205118533009469)
+- [https://antfu.me/](https://antfu.me/)
+
 
 - [令人愉快的 Nuxt3 教程 (一): 应用的创建与配置](https://juejin.cn/post/7114476679598178312)
 - [令人愉快的 Nuxt3 教程 (二): 快速轻松地搭建博客](https://juejin.cn/post/7117806971226423304)
