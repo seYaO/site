@@ -1,7 +1,12 @@
 <template>
   <div :class="ui.wrapper" v-bind="attrs">
     <div :class="ui.header">
-      <button v-for="(tab, index) in tabs" :key="index" tabindex="-1" :class="[ui.tab.base, selectedIndex === index ? ui.tab.active : ui.tab.inactive]" @click="click(index)">
+      <button
+        v-for="(tab, index) in tabs"
+        :key="index"
+        tabindex="-1"
+        :class="[ui.tab.base, selectedIndex === index ? ui.tab.active : ui.tab.inactive]"
+        @click="selectedIndex = index">
         <ProseCodeIcon :icon="tab.icon" :filename="tab.label" :class="ui.tab.icon.base" />
         <span>{{ tab.label }}</span>
       </button>
@@ -58,9 +63,4 @@ function transformSlot(slot: any, index: number) {
 
 const tabs = computed(() => slots.default?.()?.flatMap(transformSlot).filter(Boolean) || []);
 const selectedTab = computed(() => tabs.value.find((_, index) => index === selectedIndex.value));
-
-function click(index: number) {
-  selectedIndex.value = index;
-  console.log("selectedIndex", index);
-}
 </script>

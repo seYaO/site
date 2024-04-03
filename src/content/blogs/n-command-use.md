@@ -1,6 +1,7 @@
 ---
 title: n 命令使用
 date: 2024/04/01
+category: 命令
 ---
 
 # n 命令使用

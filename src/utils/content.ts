@@ -47,3 +47,19 @@ export function findPageBreadcrumb(navigation?: NavItem[], page?: ParsedContent 
     return breadcrumb;
   }, []);
 }
+
+export function insertYearToPosts(posts: any) {
+  let currentYear = -1;
+  return posts.reduce((posts: any, post: any) => {
+    const year = new Date(post.date).getFullYear();
+    if (year !== currentYear && !isNaN(year)) {
+      posts.push({
+        isMarked: true,
+        year,
+      });
+      currentYear = year;
+    }
+    posts.push(post);
+    return posts;
+  }, []);
+}

@@ -1,10 +1,9 @@
 ---
 title: linux 基础命令
 date: 2022/11/05
+category: 命令
 tags:
  - linux
-categories:
- - 命令
 ---
 
 ## linux基础命令

@@ -1,29 +1,82 @@
 <template>
-  <p>
-    <ULink to="/blogs/flex-grammar" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Flex 布局</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/content-prose" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">markdown 扩展组件</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/n-command-use" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">n 命令使用</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/git-command" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">git 常用命令</ULink>
-  </p>
+  <UContainer>
+    <UPageHeader :title="title" :description="description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
+      <div class="mt-4 flex flex-wrap items-center gap-6">最近的{{ latest }}篇文章（共{{ total }}篇）</div>
+    </UPageHeader>
 
-  <p>
-    <ULink to="/blogs/linux-command" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">linux 基础命令</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/mac-command" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">mac 常用命令</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/npm-command" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">npm 常用命令</ULink>
-  </p>
-  <p>
-    <ULink to="/blogs/cross-browser_css3_features" active-class="text-primary" inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-      CSS3 常用功能的写法
-    </ULink>
-  </p>
+    <UPage>
+      <UPageBody>
+        <UPageGrid>
+          <UPageCard
+            v-for="(article, index) in articles"
+            :key="index"
+            :to="article._path"
+            :title="article.title"
+            :description="article.description"
+            class="flex flex-col overflow-hidden"
+            :ui="{
+              divide: '',
+              header: { base: 'aspect-w-4 aspect-h-2', padding: '' },
+              footer: { padding: 'pt-0' },
+              title: 'text-lg',
+              description: 'line-clamp-2',
+            }">
+            <template #icon>
+              <UBadge :label="article.category" variant="subtle" />
+            </template>
+
+            <template #footer>
+              <div class="flex items-center justify-between gap-3">
+                <time class="text-gray-500 dark:text-gray-400">{{ formatDateByLocale("zh-CN", article.date) }}</time>
+
+                <UAvatarGroup size="xs" v-if="article.authors">
+                  <UAvatar
+                    v-for="(author, subIndex) in article.authors"
+                    :key="subIndex"
+                    :src="author.avatarUrl"
+                    :alt="author.name"
+                    class="lg:hover:scale-110 lg:hover:ring-primary-500 dark:lg:hover:ring-primary-400 transition-transform">
+                    <NuxtLink v-if="author.link" :to="author.link" target="_blank" class="focus:outline-none" tabindex="-1">
+                      <span class="absolute inset-0" aria-hidden="true" />
+                    </NuxtLink>
+                  </UAvatar>
+                </UAvatarGroup>
+              </div>
+            </template>
+          </UPageCard>
+        </UPageGrid>
+      </UPageBody>
+
+      <template #right>
+        <UContentToc>
+          <template #bottom>
+            <div class="hidden lg:block space-y-6">
+              <UPageLinks title="分类" :links="categoryLinks" />
+              <UDivider type="dashed" />
+            </div>
+          </template>
+        </UContentToc>
+      </template>
+    </UPage>
+  </UContainer>
 </template>
+
+<script setup lang="ts">
+const route = useRoute();
+const { categoryLinks } = useNavigation();
+const { fetchList, articles, latest, total } = useBlog();
+
+const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
+
+const title = page.value.head?.title || page.value.title;
+const description = page.value.head?.description || page.value.description;
+useSeoMeta({
+  titleTemplate: "%s",
+  title,
+  description,
+  ogDescription: description,
+  ogTitle: title,
+});
+
+await fetchList();
+</script>

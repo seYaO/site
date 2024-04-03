@@ -86,3 +86,4 @@ npm install prettier
 - [令人愉快的 Nuxt3 教程 (二): 快速轻松地搭建博客](https://juejin.cn/post/7117806971226423304)
 
 - [n命令安装及使用](https://www.jianshu.com/p/037d2af25a03)
+- [iconify](https://icon-sets.iconify.design/)

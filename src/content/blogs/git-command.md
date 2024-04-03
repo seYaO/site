@@ -1,10 +1,9 @@
 ---
 title: git 常用命令
 date: 2022/11/05
+category: 命令
 tags:
  - git
-categories:
- - 命令
 ---
 
 # git 常用命令

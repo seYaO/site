@@ -16,7 +16,14 @@
         </template>
 
         <div class="mt-4 flex flex-wrap items-center gap-6">
-          <UButton v-for="(author, index) in article.authors" :key="index" :to="author.link" target="_blank" color="white" variant="ghost" class="-my-1.5 -mx-2.5">
+          <UButton
+            v-for="(author, index) in article.authors"
+            :key="index"
+            :to="author.link"
+            target="_blank"
+            color="white"
+            variant="ghost"
+            class="-my-1.5 -mx-2.5">
             <UAvatar :src="author.avatarUrl" :alt="author.name" />
 
             <div class="text-left">

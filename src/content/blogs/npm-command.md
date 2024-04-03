@@ -1,11 +1,10 @@
 ---
 title: npm、yarn
 date: 2022/11/05
+category: 命令
 tags:
  - npm
  - yarn
-categories:
- - 命令
 ---
 
 ### npm的使用说明如下：

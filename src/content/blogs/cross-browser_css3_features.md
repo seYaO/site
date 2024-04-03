@@ -1,8 +1,12 @@
 ---
 title: CSS3 常用功能的写法
-date: 2022/11/05
-categories:
- - css3
+authors:
+  - name: lily
+    avatarUrl: https://github.com/seyao.png
+    link: https://github.com/seYaO
+    twitter: seYa
+date: 2024-03-16T10:00:00.000Z
+category: CSS3
 ---
 
 随着浏览器的升级，CSS3已经可以投入实际应用了。
