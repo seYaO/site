@@ -8,7 +8,7 @@ export default defineNuxtConfig({
      * 重构后发现，打包生成的js、css文件全部404，但是查看 "gh-pages" 分支，这个文件确实是存在的，查阅资料后发现，这是因为触发了Github.io的 content-security-policy（内容安全策略），所以被禁止访问了。
      */
     buildAssetsDir: "static", // 修改站点资产的文件夹名称，默认是_nuxt
-    baseURL: "/site/",
+    // baseURL: "/site/",
     head: {
       title: "seYa 的网站", //网站标题
       meta: [

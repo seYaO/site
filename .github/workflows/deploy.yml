@@ -37,6 +37,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: seyao/site
+          REPOSITORY_NAME: seyao/seYaO.github.io.git
           FOLDER: dist
-          BRANCH: gh-pages
+          BRANCH: master
