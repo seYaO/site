@@ -83,5 +83,5 @@ export default defineNuxtConfig({
       // },
     },
   },
-  css: ["@/assets/css/main.css", "@/assets/css/scrollbars.css"],
+  css: ["@/assets/css/main.css", "@/assets/css/scrollbars.css", "@/assets/css/transition.css"],
 });

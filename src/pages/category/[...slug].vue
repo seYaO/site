@@ -8,10 +8,9 @@
 
     <UPage>
       <UPageBody>
-        <!-- {{ articles }} -->
         <template v-for="(article, index) in articles" :key="article._path">
-          <div v-if="article.isMarked" class="relative pointer-events-none select-none h-20" slide-enter :style="{ '--stagger': index + 1 }">
-            <span class="text-8em font-bold op-15 absolute -top-0.2em -left-0.3em color-transparent text-stroke-2 text-stroke-hex-aaa">
+          <div v-if="article.isMarked" class="relative pointer-events-none select-none h-20" slide-enter>
+            <span class="text-7xl font-bold font-mono opacity-15 absolute text-transparent text-stroke-2 text-stroke-hex-aaa">
               {{ article.year }}
             </span>
           </div>
