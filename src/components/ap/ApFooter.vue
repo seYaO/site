@@ -9,11 +9,7 @@ const { footerLinks } = useNavigation();
       top: { wrapper: 'border-t border-gray-200 dark:border-gray-800', container: 'py-8 lg:py-12' },
     }">
     <template #top>
-      <UFooterColumns :links="footerLinks">
-        <template #right>
-          <NewsletterForm />
-        </template>
-      </UFooterColumns>
+      <UFooterColumns :links="footerLinks"></UFooterColumns>
     </template>
 
     <template #left>
@@ -25,8 +21,18 @@ const { footerLinks } = useNavigation();
 
     <template #right>
       <UButton aria-label="Nuxt on X" to="https://x.com/nuxt_js" target="_blank" icon="i-simple-icons-x" v-bind="$ui.button.secondary as any" />
-      <UButton aria-label="Nuxt on Discord" to="https://discord.com/invite/nuxt" target="_blank" icon="i-simple-icons-discord" v-bind="$ui.button.secondary as any" />
-      <UButton aria-label="Nuxt on GitHub" to="https://github.com/nuxt/nuxt" target="_blank" icon="i-simple-icons-github" v-bind="$ui.button.secondary as any" />
+      <UButton
+        aria-label="Nuxt on Discord"
+        to="https://discord.com/invite/nuxt"
+        target="_blank"
+        icon="i-simple-icons-discord"
+        v-bind="$ui.button.secondary as any" />
+      <UButton
+        aria-label="Nuxt on GitHub"
+        to="https://github.com/nuxt/nuxt"
+        target="_blank"
+        icon="i-simple-icons-github"
+        v-bind="$ui.button.secondary as any" />
     </template>
   </UFooter>
 </template>

@@ -63,20 +63,29 @@ defineProps<{
 <template>
   <UHeader :links="links" title="seYa">
     <template #center>
-      <UHeaderLinks :links="links" :ui="{ default: { popover: { popper: { strategy: 'absolute' }, ui: { width: 'w-[256px]' } } } }" class="hidden lg:flex" />
+      <UHeaderLinks
+        :links="links"
+        :ui="{ default: { popover: { popper: { strategy: 'absolute' }, ui: { width: 'w-[256px]' } } } }"
+        class="hidden lg:flex" />
     </template>
 
     <template #right>
-      <UTooltip text="Search" :shortcuts="[metaSymbol, 'K']">
+      <!-- 站内搜索 -->
+      <!-- <UTooltip text="Search" :shortcuts="[metaSymbol, 'K']">
         <UContentSearchButton :label="null" />
-      </UTooltip>
+      </UTooltip> -->
 
       <UTooltip :text="$colorMode.preference === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
         <UColorModeButton />
       </UTooltip>
 
       <UTooltip text="GitHub Stars">
-        <UButton icon="i-simple-icons-github" to="https://github.com/seYaO/site" target="_blank" :label="stats ? formatNumber(stats.stars) : ''" v-bind="$ui.button.secondary as any" />
+        <UButton
+          icon="i-simple-icons-github"
+          to="https://github.com/seYaO/site"
+          target="_blank"
+          :label="stats ? formatNumber(stats.stars) : ''"
+          v-bind="$ui.button.secondary as any" />
       </UTooltip>
     </template>
 
