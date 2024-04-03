@@ -1,1 +1,0 @@
-import{g as t,I as l,bH as r,bI as m,j as e,o as p,s as i,m as u,bD as c,T as d,k as f}from"./CJEpAnC7.js";const V=t({__name:"Slideovers.client",setup(v){const o=l(r),{isOpen:s}=m();return(_,n)=>e(o)?(p(),i(d(e(o).component),u({key:0},e(o).props,{modelValue:e(s),"onUpdate:modelValue":n[0]||(n[0]=a=>c(s)?s.value=a:null)}),null,16,["modelValue"])):f("",!0)}});export{V as default};
