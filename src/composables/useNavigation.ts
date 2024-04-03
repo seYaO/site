@@ -149,11 +149,11 @@ const _useNavigation = () => {
         },
         {
           label: "Team",
-          to: "/team",
+          // to: "/team",
         },
         {
           label: "Design Kit",
-          to: "/design-kit",
+          // to: "/design-kit",
         },
       ],
     },
@@ -162,19 +162,19 @@ const _useNavigation = () => {
       children: [
         {
           label: "Support",
-          to: "/enterprise/support",
+          // to: "/enterprise/support",
         },
         {
           label: "Agencies",
-          to: "/enterprise/agencies",
+          // to: "/enterprise/agencies",
         },
         {
           label: "Jobs",
-          to: "/enterprise/jobs",
+          // to: "/enterprise/jobs",
         },
         {
           label: "Sponsors",
-          to: "/enterprise/sponsors",
+          // to: "/enterprise/sponsors",
         },
       ],
     },
@@ -223,17 +223,17 @@ const _useNavigation = () => {
     {
       label: "Team",
       icon: "i-ph-users-duotone",
-      to: "/team",
+      // to: "/team",
     },
     {
       label: "Design Kit",
       icon: "i-ph-palette-duotone",
-      to: "/design-kit",
+      // to: "/design-kit",
     },
     {
       label: "Newsletter",
       icon: "i-ph-envelope-simple-duotone",
-      to: "/newsletter",
+      // to: "/newsletter",
     },
   ]);
 
