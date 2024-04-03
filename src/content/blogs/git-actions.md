@@ -1,4 +1,12 @@
-# github actions
+---
+title: git actions
+date: 2024-04-04
+category: 命令
+tags:
+ - git
+---
+
+## github actions
 
 ```yml
 # 工作流的名称，如果省略，则使用当前文件名
@@ -94,13 +102,14 @@ jobs:
           FOLDER: dist
           # 希望部署的分支，默认gh-pages
           # BRANCH: gh-pages
-           BRANCH: master
+          BRANCH: master
           # 默认情况是不需要填的，如果您需要更多权限，例如部署到另一个存储库才需要填写
           # TOKEN_NAME 对应 GitHub Secrets 中设置的字段【配置详细步骤在文章下面内容中】，不要照搬
           # 仓库范围的访问令牌，可以将个人令牌的值存储在 GitHub Secrets 中
           TOKEN: ${{ secrets.TOKEN_NAME }}
           # 部署到GitHub的不同仓库 <用户名>/<仓库名>
           # 此选项必须配置了TOKEN才能正常执行
-          REPOSITORY-NAME: seYaO/seYaO.github.io.git
+          # REPOSITORY-NAME: seyao/site
+          REPOSITORY-NAME: seYaO/seYaO.github.io
 
 ```
