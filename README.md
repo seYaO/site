@@ -68,6 +68,9 @@ npm install prettier
 
 ## 参考链接
 
+- [本地](http://localhost:3000/)
+- [_tailwind](http://localhost:3000/_tailwind/)
+
 - [nuxt](https://nuxt.com/)
 - [nuxt中文](https://ezdoc.cn/docs/nuxtjs)
 - [@nuxt/content](https://content.nuxt.com/)

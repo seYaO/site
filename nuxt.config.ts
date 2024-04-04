@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   },
   modules: ["@nuxt/content", "@nuxt/ui", "@nuxt/image", "@vueuse/nuxt"],
   colorMode: {
-    preference: "dark",
+    preference: "light",
   },
   ui: {
     global: true,
@@ -63,24 +63,6 @@ export default defineNuxtConfig({
       },
       langs: ["js", "ts", "vue", "css", "scss", "sass", "html", "bash", "md", "mdc", "json"],
       preload: ["c", "cpp", "java"],
-    },
-    markdown: {
-      tags: {
-        // p:'MyCustomParagraph'
-      },
-      // Object syntax can be used to override default options
-      // remarkPlugins: {
-      //   // Override remark-emoji options
-      //   'remark-emoji': {
-      //     emoticon: true
-      //   },
-      //   // Disable remark-gfm
-      //   'remark-gfm': false,
-      //   // Add remark-oembed
-      //   'remark-oembed': {
-      //     // Options
-      //   }
-      // },
     },
   },
   css: ["@/assets/css/main.css", "@/assets/css/scrollbars.css", "@/assets/css/transition.css"],

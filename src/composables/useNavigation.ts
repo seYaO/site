@@ -6,9 +6,9 @@ const _useNavigation = () => {
 
     return [
       {
-        label: "Docs",
+        label: "文档",
         icon: "i-ph-book-bookmark-duotone",
-        // to: "/docs",
+        to: "/docs",
         search: false,
         children: [
           {

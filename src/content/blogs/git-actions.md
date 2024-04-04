@@ -8,7 +8,7 @@ tags:
 
 ## github actions
 
-```yml
+```yml [.github/workflows/deploy.yml]
 # 工作流的名称，如果省略，则使用当前文件名
 name: GitHub Actions Build Docs
 
