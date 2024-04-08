@@ -1,4 +1,4 @@
-# TypeScript 的类型系统
+# 04. TypeScript 的类型系统
 
 本章是 TypeScript 类型系统的总体介绍。
 

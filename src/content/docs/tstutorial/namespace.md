@@ -1,4 +1,4 @@
-# TypeScript namespace
+# 16. TypeScript namespace
 
 namespace 是一种将相关代码组织在一起的方式，中文译为“命名空间”。
 

@@ -1,4 +1,4 @@
-# TypeScript 的对象类型
+# 09. TypeScript 的对象类型
 
 ## 简介
 

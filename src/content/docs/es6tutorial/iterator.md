@@ -1,4 +1,4 @@
-# Iterator 和 for...of 循环
+# 18. Iterator 和 for...of 循环
 
 ## Iterator（遍历器）的概念
 

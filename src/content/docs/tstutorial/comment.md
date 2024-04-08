@@ -1,4 +1,4 @@
-# TypeScript 的注释指令
+# 24. TypeScript 的注释指令
 
 TypeScript 接受一些注释指令。
 

@@ -1,4 +1,4 @@
-# TypeScript 基本用法
+# 02. TypeScript 基本用法
 
 本章介绍 TypeScript 的一些最基本的语法和用法。
 

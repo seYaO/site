@@ -1,4 +1,4 @@
-# TypeScript 的类型映射
+# 22. TypeScript 的类型映射
 
 ## 简介
 

@@ -1,4 +1,4 @@
-# TypeScript 的 class 类型
+# 11. TypeScript 的 class 类型
 
 ## 简介
 

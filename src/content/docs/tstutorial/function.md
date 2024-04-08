@@ -1,4 +1,4 @@
-# TypeScript 的函数类型
+# 08. TypeScript 的函数类型
 
 ## 简介
 

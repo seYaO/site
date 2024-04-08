@@ -1,4 +1,4 @@
-# Promise 对象
+# 17. Promise 对象
 
 ## Promise 的含义
 

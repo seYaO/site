@@ -1,4 +1,4 @@
-# any 类型，unknown 类型，never 类型
+# 05. any 类型，unknown 类型，never 类型
 
 本章介绍 TypeScript 的三种特殊类型，它们可以作为学习 TypeScript 类型系统的起点。
 

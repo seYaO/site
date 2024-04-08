@@ -1,4 +1,4 @@
-# TypeScript 的 Enum 类型
+# 13. TypeScript 的 Enum 类型
 
 Enum 是 TypeScript 新增的一种数据结构和类型，中文译为“枚举”。
 

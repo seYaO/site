@@ -1,4 +1,4 @@
-# TypeScript 泛型
+# 12. TypeScript 泛型
 
 ## 简介
 

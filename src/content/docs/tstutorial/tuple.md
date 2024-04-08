@@ -1,4 +1,4 @@
-# TypeScript 的元组类型
+# 06. TypeScript 的元组类型
 
 ## 简介
 

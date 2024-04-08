@@ -1,4 +1,4 @@
-# TypeScript 的 interface 接口
+# 10. TypeScript 的 interface 接口
 
 ## 简介
 

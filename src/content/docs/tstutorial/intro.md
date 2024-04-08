@@ -1,4 +1,4 @@
-# TypeScript 语言简介
+# 01. TypeScript 语言简介
 
 ## 概述
 

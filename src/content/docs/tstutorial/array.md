@@ -1,4 +1,4 @@
-# TypeScript 的数组类型
+# 05. TypeScript 的数组类型
 
 JavaScript 数组在 TypeScript 里面分成两种类型，分别是数组（array）和元组（tuple）。
 

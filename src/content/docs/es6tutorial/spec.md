@@ -1,4 +1,4 @@
-# 读懂 ECMAScript 规格
+# 27. 读懂 ECMAScript 规格
 
 ## 概述
 

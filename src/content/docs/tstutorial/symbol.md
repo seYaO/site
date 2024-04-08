@@ -1,4 +1,4 @@
-# TypeScript 的 symbol 类型
+# 07. TypeScript 的 symbol 类型
 
 ## 简介
 
