@@ -3,16 +3,7 @@
     <UPage>
       <UPageHeader :title="article.title" :description="article.description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
         <template #headline>
-          <UBreadcrumb :links="[{ label: 'Blog', icon: 'i-ph-newspaper-duotone', to: '/blogs' }, { label: article.title }]" />
-          <div class="flex items-center space-x-2">
-            <span>
-              {{ article.category }}
-            </span>
-            <span class="text-gray-500 dark:text-gray-400">
-              &middot;&nbsp;&nbsp;
-              <time>{{ formatDateByLocale("en", article.date) }}</time>
-            </span>
-          </div>
+          <UBreadcrumb :links="[{ label: '文档', icon: 'i-ph-newspaper-duotone', to: '/docs' }, { label: article.title }]" />
         </template>
 
         <div class="mt-4 flex flex-wrap items-center gap-6">
@@ -43,18 +34,17 @@
           <ContentRenderer v-if="article && article.body" :value="article" />
 
           <div class="flex items-center justify-between mt-12 not-prose">
-            <NuxtLink href="/blogs" class="text-primary">← Back to blog</NuxtLink>
+            <NuxtLink href="/docs" class="text-primary">← Back to docs</NuxtLink>
           </div>
-
-          <!-- <hr v-if="surround?.length" /> -->
-
-          <!-- <UContentSurround :surround="surround" /> -->
         </UPageBody>
 
         <template #right>
           <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links">
             <template #bottom>
               <div class="hidden lg:block space-y-6">
+                <UDivider type="dashed" />
+
+                <UPageLinks title="目录" :links="links" />
                 <UDivider type="dashed" />
               </div>
             </template>
@@ -67,13 +57,28 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const { copy } = useCopyToClipboard();
+const path = `/docs/${route.params.group}/chapters`;
+
+const { data: menus } = await useAsyncData(path, () => queryContent(path).findOne());
+const links = computed(() => {
+  let list = [];
+  menus.value.body.map(item => {
+    if (!item) return;
+    const key = Object.keys(item)[0];
+    const label = item[key];
+    const link = key.replace(".md", "");
+    list.push({ label, icon: "i-ph-newspaper-duotone", to: `./${link}` });
+  });
+
+  return list;
+});
 
 const { data: article } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
 if (!article.value) {
   throw createError({ statusCode: 404, statusMessage: "Article not found", fatal: true });
 }
-console.log("article.value", article.value.body);
+console.log("route.path", route.params);
+
 useSeoMeta({
   title: article.value.head?.title || article.value.title,
   description: article.value.head?.description || article.value.description,
@@ -82,10 +87,10 @@ useSeoMeta({
 const title = article.value.head?.title || article.value.title;
 const description = article.value.head?.description || article.value.description;
 useSeoMeta({
-  titleTemplate: "%s · seYa Blog",
+  titleTemplate: "%s · seYa Docs",
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} · seYa Blog`,
+  ogTitle: `${title} · seYa Docs`,
 });
 </script>
