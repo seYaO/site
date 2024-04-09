@@ -18,7 +18,7 @@ category: CSS3
 
 ## 圆角（Rounded Corner）
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031501.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031501.png)
 
 ```css
 .box_round {
@@ -35,7 +35,7 @@ category: CSS3
 
 ## 盒状阴影（Box Shadow）
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031502.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031502.png)
 
 ```css
 .box_shadow {
@@ -56,7 +56,7 @@ IE 6~8使用其独有的滤镜，需要设置三个参数：offX（X轴偏移值
 
 ## 线性渐变（Gradient）
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031503.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031503.png)
 
 ```css
 .box_gradient {
@@ -92,11 +92,11 @@ IE依靠滤镜实现渐变。`startColorstr`表示起点的颜色，`endColorstr
 
 正常情况下，上层的对象会覆盖下层的对象。
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031504.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031504.png)
 
 但是，如果将上层对象的颜色变为透明，就可以透过它看到下层对象。
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031505.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031505.png)
 
 ```css
 .box_rgba {
@@ -134,7 +134,7 @@ background-color: rgba(180, 180, 144, 0.6);
 
 ## 旋转（rotation）
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031506.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031506.png)
 
 ```css
 .box_rotate {
@@ -156,11 +156,11 @@ IE则需要用到一个复杂的滤镜DXImageTransform.Microsoft.Matrix。它一
 
 设计网页的时候，可能会用到某种特殊的字体。如果用户的机器中没有安装，文字只能以普通字体显示。
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031507.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031507.png)
 
 这时可以让用户的浏览器自行下载服务器端字体，然后就能呈现出设计者想要的效果。
 
-![cover](/blogImg/cross-browser_css3_features/bg2010031508.png)
+![cover](/images/blogs/cross-browser_css3_features/bg2010031508.png)
 
 ```css
 @font-face {

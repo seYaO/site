@@ -35,6 +35,11 @@ export default defineNuxtConfig({
     payloadExtraction: false, // 启用此选项时（默认情况下）提取使用nuxt generate生成的页面的有效负载
   },
   modules: ["@nuxt/content", "@nuxt/ui", "@nuxt/image", "@vueuse/nuxt"],
+  routeRules: {
+    // Redirects
+    "/docs": { redirect: "/docs/html-tutorial/intro", prerender: false },
+    "/docs/html-tutorial": { redirect: "/docs/html-tutorial/intro", prerender: false },
+  },
   colorMode: {
     preference: "light",
   },

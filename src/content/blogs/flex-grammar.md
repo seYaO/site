@@ -10,15 +10,15 @@ tags:
 
 网页布局（layout）是 CSS 的一个重点应用。
 
-![cover](/blogImg/flex-grammar/bg2015071001.gif)
+![cover](/images/blogs/flex-grammar/bg2015071001.gif)
 
 布局的传统解决方案，基于盒状模型，依赖 `display` 属性 + `position`属性 + `float`属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。
 
-![cover](/blogImg/flex-grammar/bg2015071002.png)
+![cover](/images/blogs/flex-grammar/bg2015071002.png)
 
 2009年，W3C 提出了一种新的方案----Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。
 
-![cover](/blogImg/flex-grammar/bg2015071003.jpg)
+![cover](/images/blogs/flex-grammar/bg2015071003.jpg)
 
 Flex 布局将成为未来布局的首选方案。本文介绍它的语法，下一篇文章给出常见布局的 Flex 写法。网友 JailBreak 为本文的所有示例制作了 Demo，也可以参考。
 
@@ -56,7 +56,7 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
-![cover](/blogImg/flex-grammar/bg2015071004.png)
+![cover](/images/blogs/flex-grammar/bg2015071004.png)
 
 容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做`main start`，结束位置叫做`main end`；交叉轴的开始位置叫做`cross start`，结束位置叫做`cross end`。
 
@@ -82,7 +82,7 @@ flex-direction属性决定主轴的方向（即项目的排列方向）。
 }
 ```
 
-![cover](/blogImg/flex-grammar/bg2015071005.png)
+![cover](/images/blogs/flex-grammar/bg2015071005.png)
 
 ::tip
 - row（默认值）：主轴为水平方向，起点在左端。
@@ -96,7 +96,7 @@ flex-direction属性决定主轴的方向（即项目的排列方向）。
 
 默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
 
-![cover](/blogImg/flex-grammar/bg2015071006.png)
+![cover](/images/blogs/flex-grammar/bg2015071006.png)
 
 ```css
 .box{
@@ -105,9 +105,9 @@ flex-direction属性决定主轴的方向（即项目的排列方向）。
 ```
 
 ::tip
-- nowrap（默认）：不换行。![cover](/blogImg/flex-grammar/bg2015071007.png)
-- wrap：换行，第一行在上方。![cover](/blogImg/flex-grammar/bg2015071008.jpg)
-- wrap-reverse：换行，第一行在下方。![cover](/blogImg/flex-grammar/bg2015071009.jpg)
+- nowrap（默认）：不换行。![cover](/images/blogs/flex-grammar/bg2015071007.png)
+- wrap：换行，第一行在上方。![cover](/images/blogs/flex-grammar/bg2015071008.jpg)
+- wrap-reverse：换行，第一行在下方。![cover](/images/blogs/flex-grammar/bg2015071009.jpg)
 ::
 
 ## flex-flow
@@ -128,7 +128,7 @@ justify-content属性定义了项目在主轴上的对齐方式。
   justify-content: flex-start | flex-end | center | space-between | space-around;
 }
 ```
-![cover](/blogImg/flex-grammar/bg2015071010.png)
+![cover](/images/blogs/flex-grammar/bg2015071010.png)
 
 ::tip
 - flex-start（默认值）：左对齐
@@ -145,7 +145,7 @@ align-items属性定义项目在交叉轴上如何对齐。
   align-items: flex-start | flex-end | center | baseline | stretch;
 }
 ```
-![cover](/blogImg/flex-grammar/bg2015071011.png)
+![cover](/images/blogs/flex-grammar/bg2015071011.png)
 
 ::tip
 - flex-start：交叉轴的起点对齐。
@@ -163,7 +163,7 @@ align-content属性定义了多根轴线的对齐方式。如果项目只有一�
   align-content: flex-start | flex-end | center | space-between | space-around | stretch;
 }
 ```
-![cover](/blogImg/flex-grammar/bg2015071012.png)
+![cover](/images/blogs/flex-grammar/bg2015071012.png)
 
 ::tip
 - flex-start：与交叉轴的起点对齐。
@@ -192,12 +192,12 @@ order属性定义项目的排列顺序。数值越小，排列越靠前，默认
   order: <integer>;
 }
 ```
-![cover](/blogImg/flex-grammar/bg2015071013.png)
+![cover](/images/blogs/flex-grammar/bg2015071013.png)
 
 ## flex-grow属性
 flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
 
-![cover](/blogImg/flex-grammar/bg2015071014.png)
+![cover](/images/blogs/flex-grammar/bg2015071014.png)
 
 ```css
 .item {
@@ -218,7 +218,7 @@ flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间�
   flex-shrink: <number>; /* default 1 */
 }
 ```
-![cover](/blogImg/flex-grammar/bg2015071015.jpg)
+![cover](/images/blogs/flex-grammar/bg2015071015.jpg)
 
 ::warning 
 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
@@ -263,4 +263,4 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 }
 ```
 
-![cover](/blogImg/flex-grammar/bg2015071016.png)
+![cover](/images/blogs/flex-grammar/bg2015071016.png)

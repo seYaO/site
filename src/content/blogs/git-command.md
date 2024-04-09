@@ -100,7 +100,7 @@ $ git push origin <分支名>
 ```
 
 会提示本地的版本落后于远端的版本；
-![cover](/blogImg/git-command-use/20160713201707723.png)
+![cover](/images/blogs/git-command-use/20160713201707723.png)
 
 为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
 ```bash
@@ -129,7 +129,7 @@ $ git push origin --delete tag <branchName>
 ```
 
 ## 常用 Git 命令清单
-![cover](/blogImg/git-command-use/bg2015120901.png)
+![cover](/images/blogs/git-command-use/bg2015120901.png)
 
 ::tip 
 提示

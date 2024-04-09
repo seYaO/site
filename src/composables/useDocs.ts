@@ -10,7 +10,7 @@ export const useDocs = () => {
 
     try {
       const data = await queryContent<DocsArticle>("/docs/" + group)
-        .where({ _extension: "md", _dir: { $contains: group } })
+        .where({ _extension: "md", _path: { $not: "/docs/" + group } })
         .without(["body", "excerpt"])
         .sort({ title: 1 })
         .find();
