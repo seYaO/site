@@ -1,6 +1,6 @@
 <template>
   <UContainer>
-    <UPageHeader title="" :description="description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
+    <UPageHeader :description="description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
       <template #headline>
         <UBreadcrumb :links="[{ label: '博客', icon: 'i-ph-newspaper-duotone', to: '/blogs' }, { label: category.label }]" />
       </template>
@@ -21,28 +21,24 @@
           </UPageProse>
         </template>
       </UPageBody>
-      <template #right>
-        <UContentToc>
-          <template #bottom>
-            <div class="hidden lg:block space-y-6">
-              <UPageLinks title="分类" :links="categoryLinks" />
-              <UDivider type="dashed" />
-            </div>
-          </template>
-        </UContentToc>
-      </template>
     </UPage>
   </UContainer>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
-const { categoryLinks } = useNavigation();
+const { headerLinks } = useNavigation();
 const { fetchList, articles, total } = useBlog();
 
-const category = categoryLinks.filter(x => x.to === route.path)[0] ?? {};
+const links = computed(() => headerLinks.value.find(link => link.to === "/blogs")?.children ?? []);
+const category = computed(() => links.value.filter(x => x.to === route.path)[0] ?? {});
+const description = computed(() => `${category.value.label} （共${total.value}篇文章）`);
 
-const description = computed(() => `${category.label} （共${total.value}篇文章）`);
+useSeoMeta({
+  titleTemplate: "%s · seYa Blog",
+  title: category.value.label,
+  ogTitle: category.value.label,
+});
 
-await fetchList(category.label);
+await fetchList(category.value.label);
 </script>

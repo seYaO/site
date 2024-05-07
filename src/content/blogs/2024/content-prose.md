@@ -1,7 +1,7 @@
 ---
 title: markdown 扩展组件
 description: markdown 扩展组件的使用介绍
-navigation: false
+# navigation: false
 authors:
   - name: lily
     avatarUrl: https://github.com/seyao.png

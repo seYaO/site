@@ -1,6 +1,6 @@
 ---
 title: 尚硅谷Vue3快速上手（2024）资料 
-navigation: false
+# navigation: false
 authors:
   - name: lily
     avatarUrl: https://github.com/seyao.png

@@ -14,6 +14,5 @@
 
 <script setup lang="ts">
 const { path } = useRoute();
-console.log("path", path);
-const { headerLinks, searchGroups, searchLinks } = useNavigation();
+const { headerLinks } = useNavigation();
 </script>

@@ -1,79 +1,78 @@
 <template>
-  <UContainer>
-    <UPage>
-      <UPageHeader :title="article.title" :description="article.description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
-        <template #headline>
-          <UBreadcrumb :links="[{ label: 'Blog', icon: 'i-ph-newspaper-duotone', to: '/blogs' }, { label: article.title }]" />
-          <div class="flex items-center space-x-2">
-            <span>
-              {{ article.category }}
-            </span>
-            <span class="text-gray-500 dark:text-gray-400">
-              &middot;&nbsp;&nbsp;
-              <time>{{ formatDateByLocale("en", article.date) }}</time>
-            </span>
-          </div>
-        </template>
-
-        <div class="mt-4 flex flex-wrap items-center gap-6">
-          <UButton
-            v-for="(author, index) in article.authors"
-            :key="index"
-            :to="author.link"
-            target="_blank"
-            color="white"
-            variant="ghost"
-            class="-my-1.5 -mx-2.5">
-            <UAvatar :src="author.avatarUrl" :alt="author.name" />
-
-            <div class="text-left">
-              <p class="font-medium">
-                {{ author.name }}
-              </p>
-              <p class="text-gray-500 dark:text-gray-400 leading-4">
-                {{ `@${author.link.split("/").pop()}` }}
-              </p>
-            </div>
-          </UButton>
+  <UPage>
+    <UPageHeader v-bind="article" :ui="{ headline: 'justify-between' }">
+      <template #headline>
+        <UBreadcrumb :links="breadcrumb" />
+        <div class="flex items-center space-x-2">
+          <UBadge :label="article.category" variant="subtle" />
+          <span class="text-gray-500 dark:text-gray-400">
+            &middot;&nbsp;&nbsp;
+            <time>{{ formatDateByLocale("zh-CN", article.date) }}</time>
+          </span>
         </div>
-      </UPageHeader>
+      </template>
 
-      <UPage>
-        <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
-          <ContentRenderer v-if="article && article.body" :value="article" />
+      <div class="mt-4 flex flex-wrap items-center gap-6">
+        <UButton
+          v-for="(author, index) in article.authors"
+          :key="index"
+          :to="author.link"
+          target="_blank"
+          color="white"
+          variant="ghost"
+          class="-my-1.5 -mx-2.5">
+          <UAvatar :src="author.avatarUrl" :alt="author.name" />
 
-          <div class="flex items-center justify-between mt-12 not-prose">
-            <NuxtLink href="/blogs" class="text-primary">← Back to blog</NuxtLink>
+          <div class="text-left">
+            <p class="font-medium">
+              {{ author.name }}
+            </p>
+            <p class="text-gray-500 dark:text-gray-400 leading-4">
+              {{ `@${author.link.split("/").pop()}` }}
+            </p>
           </div>
+        </UButton>
+      </div>
+    </UPageHeader>
 
-          <!-- <hr v-if="surround?.length" /> -->
+    <UPage>
+      <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
+        <ContentRenderer v-if="article && article.body" :value="article" />
+      </UPageBody>
 
-          <!-- <UContentSurround :surround="surround" /> -->
-        </UPageBody>
-
-        <template #right>
-          <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links">
-            <template #bottom>
-              <div class="hidden lg:block space-y-6">
-                <UDivider type="dashed" />
-              </div>
-            </template>
-          </UContentToc>
-        </template>
-      </UPage>
+      <template #right v-if="article.body?.toc?.links?.length">
+        <UContentToc :links="article.body.toc.links">
+          <template #bottom>
+            <div class="hidden lg:block space-y-6">
+              <UDivider type="dashed" />
+            </div>
+          </template>
+        </UContentToc>
+      </template>
     </UPage>
-  </UContainer>
+  </UPage>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
 const { copy } = useCopyToClipboard();
+const { data: navigation } = await useAsyncData("navigation", () => fetchContentNavigation());
 
 const { data: article } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
 if (!article.value) {
   throw createError({ statusCode: 404, statusMessage: "Article not found", fatal: true });
 }
-console.log("article.value", article.value.body);
+
+const breadcrumb = computed(() => {
+  let links = mapContentNavigation(findPageBreadcrumb(navigation.value, article.value)).map(link => ({
+    label: link.label,
+    to: ["/blogs"].includes(link.to) ? link.to : undefined,
+  }));
+  links.push({ label: article.value.title });
+
+  return links;
+});
+
 useSeoMeta({
   title: article.value.head?.title || article.value.title,
   description: article.value.head?.description || article.value.description,

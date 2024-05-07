@@ -2,7 +2,7 @@
   "name": "site",
   "private": true,
   "type": "module",
-  "homepage": "https://seyao.github.io/site",
+  "homepage": "https://seyao.github.io",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",

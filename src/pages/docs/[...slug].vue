@@ -39,10 +39,9 @@
 </template>
 
 <script setup lang="ts">
-const { data: navigation } = await useAsyncData("navigation", () => fetchContentNavigation());
 const route = useRoute();
 const { navKeyFromPath } = useContentHelpers();
-const { headerLinks } = useNavigation();
+const { data: navigation } = await useAsyncData("navigation", () => fetchContentNavigation());
 
 const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
 if (!page.value) {
@@ -62,7 +61,7 @@ const titleTemplate = computed(() => {
   if (page.value.titleTemplate) return page.value.titleTemplate;
   const titleTemplate = navKeyFromPath(route.path, "titleTemplate", navigation.value);
   if (titleTemplate) return titleTemplate;
-  return "%s · Nuxt";
+  return "%s · seYa";
 });
 const title = page.value.head?.title || page.value.title;
 const description = page.value.head?.description || page.value.description;
